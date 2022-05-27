@@ -15,7 +15,7 @@ class _MasterPageState extends State<MasterPage> {
 
   Widget witchPage (int index){
     if(index == 0){
-      return const RegisterTab();
+      return RegisterTab();
     }else if(index == 1){
       return const EmployeesTab();
     }else{
