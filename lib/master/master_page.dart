@@ -1,5 +1,5 @@
 import 'package:centralcareweb/master/tabs/employees_tab.dart';
-import 'package:centralcareweb/master/tabs/register_tab.dart';
+import 'package:centralcareweb/master/tabs/register_tab/register_tab.dart';
 import 'package:centralcareweb/master/tabs/settings_tab.dart';
 import 'package:flutter/material.dart';
 
