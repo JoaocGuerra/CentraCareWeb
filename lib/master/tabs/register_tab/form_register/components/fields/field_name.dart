@@ -1,13 +1,13 @@
+import 'package:centralcareweb/store/tabs/register_tab/register_tab_store.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../../../../components/custom_textformfield.dart';
-import '../../../../../../store/register_tab_store.dart';
 
-class FormFieldEmail extends StatelessWidget {
+class FormFieldName extends StatelessWidget {
   final RegisterTabStore registerTabStore =  GetIt.I<RegisterTabStore>();
 
-  FormFieldEmail({Key? key}) : super(key: key);
+  FormFieldName({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +15,14 @@ class FormFieldEmail extends StatelessWidget {
       constraints: BoxConstraints(maxWidth: registerTabStore.maxWidthBoxConstrains),
       child: CustomTextFormField(
         list: const [],
-        textEditingController: registerTabStore.emailController,
+        textEditingController: registerTabStore.nameController,
         isPasswordType: false,
-        icon: Icons.mail,
-        text: 'Email',
-        textInputType: TextInputType.emailAddress,
+        icon: Icons.person,
+        text: 'Nome',
+        textInputType: TextInputType.text,
         validator: (value) {
           if (value!.isEmpty) {
-            return "Email Inválido";
+            return "Nome Inválido";
           }
           return null;
         },

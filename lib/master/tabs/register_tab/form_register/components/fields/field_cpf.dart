@@ -1,28 +1,33 @@
-import 'package:centralcareweb/store/register_tab_store.dart';
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../../../../components/custom_textformfield.dart';
+import '../../../../../../store/tabs/register_tab/register_tab_store.dart';
 
-class FormFieldName extends StatelessWidget {
+class FormFieldCpf extends StatelessWidget {
   final RegisterTabStore registerTabStore =  GetIt.I<RegisterTabStore>();
 
-  FormFieldName({Key? key}) : super(key: key);
+  FormFieldCpf({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(maxWidth: registerTabStore.maxWidthBoxConstrains),
       child: CustomTextFormField(
-        list: const [],
-        textEditingController: registerTabStore.nameController,
+        list: [
+          FilteringTextInputFormatter.digitsOnly,
+          CpfInputFormatter()
+        ],
+        textEditingController: registerTabStore.cpfController,
         isPasswordType: false,
-        icon: Icons.person,
-        text: 'Nome',
-        textInputType: TextInputType.text,
+        icon: Icons.numbers,
+        text: 'CPF',
+        textInputType: TextInputType.number,
         validator: (value) {
           if (value!.isEmpty) {
-            return "Nome Inválido";
+            return "CPF Inválido";
           }
           return null;
         },

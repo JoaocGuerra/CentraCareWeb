@@ -3,10 +3,10 @@ import 'package:mobx/mobx.dart';
 
 part 'register_tab_store.g.dart';
 
-class RegisterTabStore = _RegisterTabStore with _$RegisterTabStore;
-
 enum Gender { MASCULINO, FEMININO, OUTRO }
 enum Function { SECRETARIA, MEDICO }
+
+class RegisterTabStore = _RegisterTabStore with _$RegisterTabStore;
 
 abstract class _RegisterTabStore with Store {
 
@@ -34,6 +34,5 @@ abstract class _RegisterTabStore with Store {
 
   @action
   setFunction(String name){function = name;}
-
 
 }

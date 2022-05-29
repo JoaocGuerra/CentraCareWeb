@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../../../../store/register_tab_store.dart';
+import '../../../../../../store/tabs/register_tab/register_tab_store.dart';
 
 class SelectFunction extends StatelessWidget {
   final RegisterTabStore registerTabStore =  GetIt.I<RegisterTabStore>();

@@ -1,33 +1,28 @@
-import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../../../../components/custom_textformfield.dart';
-import '../../../../../../store/register_tab_store.dart';
+import '../../../../../../store/tabs/register_tab/register_tab_store.dart';
 
-class FormFieldCpf extends StatelessWidget {
+class FormFieldSpecialty extends StatelessWidget {
   final RegisterTabStore registerTabStore =  GetIt.I<RegisterTabStore>();
 
-  FormFieldCpf({Key? key}) : super(key: key);
+  FormFieldSpecialty({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(maxWidth: registerTabStore.maxWidthBoxConstrains),
       child: CustomTextFormField(
-        list: [
-          FilteringTextInputFormatter.digitsOnly,
-          CpfInputFormatter()
-        ],
-        textEditingController: registerTabStore.cpfController,
+        list: const [],
+        textEditingController: registerTabStore.specialtyController,
         isPasswordType: false,
-        icon: Icons.numbers,
-        text: 'CPF',
-        textInputType: TextInputType.number,
+        icon: Icons.wallet_travel,
+        text: 'Especialidade',
+        textInputType: TextInputType.emailAddress,
         validator: (value) {
           if (value!.isEmpty) {
-            return "CPF Inválido";
+            return "Especialidade Inválida";
           }
           return null;
         },

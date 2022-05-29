@@ -1,17 +1,17 @@
 import 'package:centralcareweb/master/tabs/register_tab/form_register/components/button_register.dart';
-import 'package:centralcareweb/master/tabs/register_tab/form_register/components/forms/form_field_birthday.dart';
-import 'package:centralcareweb/master/tabs/register_tab/form_register/components/forms/form_field_cpf.dart';
-import 'package:centralcareweb/master/tabs/register_tab/form_register/components/forms/form_field_email.dart';
-import 'package:centralcareweb/master/tabs/register_tab/form_register/components/forms/form_field_specialty.dart';
 import 'package:centralcareweb/master/tabs/register_tab/form_register/components/select/select_function.dart';
 import 'package:centralcareweb/master/tabs/register_tab/form_register/components/select/select_gender.dart';
 import 'package:centralcareweb/master/tabs/register_tab/form_register/components/text_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../../store/register_tab_store.dart';
-import 'components/forms/form_field_last_name.dart';
-import 'components/forms/form_field_name.dart';
+import '../../../../store/tabs/register_tab/register_tab_store.dart';
+import 'components/fields/field_birthday.dart';
+import 'components/fields/field_cpf.dart';
+import 'components/fields/field_email.dart';
+import 'components/fields/field_last_name.dart';
+import 'components/fields/field_name.dart';
+import 'components/fields/field_specialty.dart';
 
 class FormRegister extends StatelessWidget {
   final RegisterTabStore registerTabStore =  GetIt.I<RegisterTabStore>();

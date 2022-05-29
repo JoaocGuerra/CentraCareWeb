@@ -137,6 +137,31 @@ mixin _$RegisterTabStore on _RegisterTabStore, Store {
     });
   }
 
+  late final _$_RegisterTabStoreActionController =
+      ActionController(name: '_RegisterTabStore', context: context);
+
+  @override
+  dynamic setGender(String name) {
+    final _$actionInfo = _$_RegisterTabStoreActionController.startAction(
+        name: '_RegisterTabStore.setGender');
+    try {
+      return super.setGender(name);
+    } finally {
+      _$_RegisterTabStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic setFunction(String name) {
+    final _$actionInfo = _$_RegisterTabStoreActionController.startAction(
+        name: '_RegisterTabStore.setFunction');
+    try {
+      return super.setFunction(name);
+    } finally {
+      _$_RegisterTabStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

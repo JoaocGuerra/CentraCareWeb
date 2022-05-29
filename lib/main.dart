@@ -1,6 +1,7 @@
 import 'package:centralcareweb/master/master_page.dart';
 import 'package:centralcareweb/signIn/signIn_page.dart';
-import 'package:centralcareweb/store/register_tab_store.dart';
+import 'package:centralcareweb/store/signIn/sign_in_page_store.dart';
+import 'package:centralcareweb/store/tabs/register_tab/register_tab_store.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -11,6 +12,7 @@ void main() {
 
 void setupLocators() {
   GetIt.I.registerSingleton(RegisterTabStore());
+  GetIt.I.registerSingleton(SignInPageStore());
 }
 
 class MyApp extends StatelessWidget {
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const MasterPage(),
+      home: SignInPage(),
     );
   }
 }
