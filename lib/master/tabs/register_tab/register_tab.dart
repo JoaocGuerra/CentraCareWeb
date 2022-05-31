@@ -5,7 +5,7 @@ import 'form_register/form_register.dart';
 
 class RegisterTab extends StatelessWidget {
 
-  RegisterTab({Key? key}) : super(key: key);
+  const RegisterTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

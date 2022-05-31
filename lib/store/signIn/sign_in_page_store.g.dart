@@ -89,22 +89,6 @@ mixin _$SignInPageStore on _SignInPageStore, Store {
     });
   }
 
-  late final _$masterPageAtom =
-      Atom(name: '_SignInPageStore.masterPage', context: context);
-
-  @override
-  bool get masterPage {
-    _$masterPageAtom.reportRead();
-    return super.masterPage;
-  }
-
-  @override
-  set masterPage(bool value) {
-    _$masterPageAtom.reportWrite(value, super.masterPage, () {
-      super.masterPage = value;
-    });
-  }
-
   late final _$errorLoginAtom =
       Atom(name: '_SignInPageStore.errorLogin', context: context);
 
@@ -151,7 +135,6 @@ passwordController: ${passwordController},
 isEditingEmail: ${isEditingEmail},
 isEditingPassword: ${isEditingPassword},
 login: ${login},
-masterPage: ${masterPage},
 errorLogin: ${errorLogin}
     ''';
   }

@@ -1,6 +1,4 @@
-import 'package:centralcareweb/master/master_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../../store/signIn/sign_in_page_store.dart';
@@ -35,18 +33,6 @@ class ButtonIn extends StatelessWidget {
                         ))),
                 onPressed: () async {
                   await signInPageStore.validateLogin();
-                  // setState(() {
-                  //   _isLoggingIn = true;
-                  //   textFocusNodeEmail.unfocus();
-                  //   textFocusNodePassword.unfocus();
-                  // });
-                  // setState(() {
-                  //   _isLoggingIn = false;
-                  //   textControllerEmail.text = '';
-                  //   textControllerPassword.text = '';
-                  //   _isEditingEmail = false;
-                  //   _isEditingPassword = false;
-                  // });
                 },
                 child: const Padding(
                   padding: EdgeInsets.only(

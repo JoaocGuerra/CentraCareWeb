@@ -1,5 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
+
+import '../auth/auth_store.dart';
 
 part 'sign_in_page_store.g.dart';
 
@@ -18,12 +22,38 @@ abstract class _SignInPageStore with Store {
   @observable
   bool login = false;
   @observable
-  bool masterPage = false;
-  @observable
   bool errorLogin = false;
 
   FocusNode emailFocusNode = FocusNode();
   FocusNode passwordFocusNode = FocusNode();
+
+  @action
+  Future<void> validateLogin()async {
+
+    final AuthStore authStore =  GetIt.I<AuthStore>();
+
+    login = true;
+    try{
+      if (validateEmail(emailController.text) == null &&
+          validatePassword(passwordController.text) == null) {
+
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        );
+        authStore.fetchUser();
+        clearAllFields();
+
+      }else errorLogin = true;
+
+    }catch(e){
+      print(e.toString());
+      errorLogin = true;
+    }
+
+    login = false;
+
+  }
 
   String? validateEmail(String value) {
     value = value.trim();
@@ -49,27 +79,6 @@ abstract class _SignInPageStore with Store {
       return 'Campo vazio.';
     }
     return null;
-  }
-
-  @action
-  Future<void> validateLogin()async {
-
-    login = true;
-    if (validateEmail(emailController.text) == null &&
-        validatePassword(passwordController.text) == null) {
-
-      // singIn(context);
-      await Future.delayed(const Duration(seconds: 2));
-      masterPage = true;
-      clearAllFields();
-
-    }else{
-
-      errorLogin = true;
-
-    }
-    login = false;
-
   }
 
   @action
