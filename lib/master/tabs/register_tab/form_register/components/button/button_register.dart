@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../../../store/register_tab_store.dart';
+import '../../../../../../store/tabs/register_tab/register_tab_store.dart';
+import '../../../../../../store/tabs/register_tab/register_tab_store.dart';
 
 class ButtonRegister extends StatelessWidget {
   final RegisterTabStore registerTabStore =  GetIt.I<RegisterTabStore>();
@@ -19,7 +20,9 @@ class ButtonRegister extends StatelessWidget {
             color: Colors.green.withOpacity(0.7),
             borderRadius: BorderRadius.circular(25)),
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            registerTabStore.insertEmployee();
+          },
           child: const Center(
             child: Text(
               "Clique aqui",

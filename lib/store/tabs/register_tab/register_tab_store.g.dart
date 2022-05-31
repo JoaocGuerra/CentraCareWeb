@@ -57,6 +57,22 @@ mixin _$RegisterTabStore on _RegisterTabStore, Store {
     });
   }
 
+  late final _$passwordControllerAtom =
+      Atom(name: '_RegisterTabStore.passwordController', context: context);
+
+  @override
+  TextEditingController get passwordController {
+    _$passwordControllerAtom.reportRead();
+    return super.passwordController;
+  }
+
+  @override
+  set passwordController(TextEditingController value) {
+    _$passwordControllerAtom.reportWrite(value, super.passwordController, () {
+      super.passwordController = value;
+    });
+  }
+
   late final _$cpfControllerAtom =
       Atom(name: '_RegisterTabStore.cpfController', context: context);
 
@@ -137,17 +153,96 @@ mixin _$RegisterTabStore on _RegisterTabStore, Store {
     });
   }
 
+  late final _$loadingAtom =
+      Atom(name: '_RegisterTabStore.loading', context: context);
+
+  @override
+  bool get loading {
+    _$loadingAtom.reportRead();
+    return super.loading;
+  }
+
+  @override
+  set loading(bool value) {
+    _$loadingAtom.reportWrite(value, super.loading, () {
+      super.loading = value;
+    });
+  }
+
+  late final _$userRegisterAtom =
+      Atom(name: '_RegisterTabStore.userRegister', context: context);
+
+  @override
+  bool get userRegister {
+    _$userRegisterAtom.reportRead();
+    return super.userRegister;
+  }
+
+  @override
+  set userRegister(bool value) {
+    _$userRegisterAtom.reportWrite(value, super.userRegister, () {
+      super.userRegister = value;
+    });
+  }
+
+  late final _$insertEmployeeAsyncAction =
+      AsyncAction('_RegisterTabStore.insertEmployee', context: context);
+
+  @override
+  Future<void> insertEmployee() {
+    return _$insertEmployeeAsyncAction.run(() => super.insertEmployee());
+  }
+
+  late final _$_RegisterTabStoreActionController =
+      ActionController(name: '_RegisterTabStore', context: context);
+
+  @override
+  dynamic setGender(String name) {
+    final _$actionInfo = _$_RegisterTabStoreActionController.startAction(
+        name: '_RegisterTabStore.setGender');
+    try {
+      return super.setGender(name);
+    } finally {
+      _$_RegisterTabStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic setFunction(String name) {
+    final _$actionInfo = _$_RegisterTabStoreActionController.startAction(
+        name: '_RegisterTabStore.setFunction');
+    try {
+      return super.setFunction(name);
+    } finally {
+      _$_RegisterTabStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void clearAllFields() {
+    final _$actionInfo = _$_RegisterTabStoreActionController.startAction(
+        name: '_RegisterTabStore.clearAllFields');
+    try {
+      return super.clearAllFields();
+    } finally {
+      _$_RegisterTabStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 nameController: ${nameController},
 lastNameController: ${lastNameController},
 emailController: ${emailController},
+passwordController: ${passwordController},
 cpfController: ${cpfController},
 birthdayController: ${birthdayController},
 specialtyController: ${specialtyController},
 gender: ${gender},
-function: ${function}
+function: ${function},
+loading: ${loading},
+userRegister: ${userRegister}
     ''';
   }
 }

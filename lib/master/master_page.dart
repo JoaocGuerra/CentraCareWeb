@@ -1,7 +1,11 @@
-import 'package:centralcareweb/master/tabs/employees_tab.dart';
+import 'package:centralcareweb/master/tabs/employess_tab/employees_tab.dart';
 import 'package:centralcareweb/master/tabs/register_tab/register_tab.dart';
 import 'package:centralcareweb/master/tabs/settings_tab.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+
+import '../signIn/signIn_page.dart';
+import '../store/auth/auth_store.dart';
 
 class MasterPage extends StatefulWidget {
   const MasterPage({Key? key}) : super(key: key);
@@ -11,15 +15,17 @@ class MasterPage extends StatefulWidget {
 }
 
 class _MasterPageState extends State<MasterPage> {
+  final AuthStore authStore =  GetIt.I<AuthStore>();
   int _selectedIndex = 0;
 
   Widget witchPage (int index){
     if(index == 0){
       return RegisterTab();
     }else if(index == 1){
-      return const EmployeesTab();
+      return EmployeesTab();
     }else{
-      return const SettingsTab();
+      authStore.userSignOut();
+      return const CircularProgressIndicator();
     }
   }
 
@@ -47,10 +53,15 @@ class _MasterPageState extends State<MasterPage> {
                 selectedIcon: Icon(Icons.book),
                 label: Text('Cadastrados'),
               ),
+              // NavigationRailDestination(
+              //   icon: Icon(Icons.settings_applications_outlined),
+              //   selectedIcon: Icon(Icons.settings_applications),
+              //   label: Text('Configurações'),
+              // ),
               NavigationRailDestination(
-                icon: Icon(Icons.settings_applications_outlined),
-                selectedIcon: Icon(Icons.settings_applications),
-                label: Text('Configurações'),
+                icon: Icon(Icons.exit_to_app_outlined,color: Colors.red,),
+                selectedIcon: Icon(Icons.exit_to_app,color: Colors.red),
+                label: Text('Sair'),
               ),
             ],
           ),
