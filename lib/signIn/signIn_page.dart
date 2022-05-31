@@ -1,5 +1,4 @@
 import 'package:centralcareweb/master/master_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../components/custom_text.dart';
 
@@ -13,21 +12,21 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  Future singIn(BuildContext context) async {
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: textControllerEmail.text.trim(),
-        password: textControllerPassword.text.trim(),
-      );
-    } catch (e) {
-      print(e.toString());
-      const snackBar = SnackBar(
-        content: CustomText(text: 'Email ou senha incorreto.'),
-        backgroundColor: Colors.red,
-      );
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    }
-  }
+  // Future singIn(BuildContext context) async {
+  //   try {
+  //     await FirebaseAuth.instance.signInWithEmailAndPassword(
+  //       email: textControllerEmail.text.trim(),
+  //       password: textControllerPassword.text.trim(),
+  //     );
+  //   } catch (e) {
+  //     print(e.toString());
+  //     const snackBar = SnackBar(
+  //       content: CustomText(text: 'Email ou senha incorreto.'),
+  //       backgroundColor: Colors.red,
+  //     );
+  //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  //   }
+  // }
 
   @override
   void initState() {
@@ -110,11 +109,6 @@ class _SignInPageState extends State<SignInPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: const [
-                            // Image.asset(
-                            //   'assets/images/ifpb.png',
-                            //   height: 25,
-                            //   alignment: Alignment.topCenter,
-                            // ),
                             CustomText(
                               text: 'Central Care',
                               fontSize: 24,
@@ -273,8 +267,8 @@ class _SignInPageState extends State<SignInPage> {
                                             ),
                                           );
                                         });
-                                    await loginAction();
-                                    Navigator.pop(context);
+                                    // await loginAction();
+                                    // Navigator.pop(context);
                                     setState(() {
                                       _isLoggingIn = true;
                                       textFocusNodeEmail.unfocus();
@@ -286,7 +280,7 @@ class _SignInPageState extends State<SignInPage> {
                                         _validatePassword(
                                                 textControllerPassword.text) ==
                                             null) {
-                                      singIn(context);
+                                      // singIn(context);
                                       Navigator.pushReplacement(
                                           context,
                                           MaterialPageRoute(
