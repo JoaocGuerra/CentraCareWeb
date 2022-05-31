@@ -1,4 +1,5 @@
 import 'package:centralcareweb/master/master_page.dart';
+import 'package:centralcareweb/recepcionista/recepicionista_page.dart';
 import 'package:centralcareweb/signIn/signIn_page.dart';
 import 'package:centralcareweb/store/register_tab_store.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const MasterPage(),
+      home: const RecepicionistaPage(),
     );
   }
 }
