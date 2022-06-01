@@ -6,7 +6,7 @@ import 'package:mobx/mobx.dart';
 part 'register_tab_store.g.dart';
 
 enum Gender { MASCULINO, FEMININO, OUTRO }
-enum Function { SECRETARIA, MEDICO }
+enum Function { RECEPCIONISTA, MEDICO }
 
 class RegisterTabStore = _RegisterTabStore with _$RegisterTabStore;
 

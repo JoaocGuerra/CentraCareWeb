@@ -2,11 +2,15 @@ import 'package:centralcareweb/signIn/signIn_page.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 import '../../constans/app_constants.dart';
+import '../../store/auth/auth_store.dart';
 
 class BuildSideBar extends StatelessWidget {
-  const BuildSideBar({Key? key}) : super(key: key);
+  final AuthStore authStore =  GetIt.I<AuthStore>();
+
+  BuildSideBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +29,9 @@ class BuildSideBar extends StatelessWidget {
                     const Icon(EvaIcons.personOutline),
                     const SizedBox(width: 10,),
                     Column(
-                      children: const [
-                        Text("Nome da Pessoa"),
-                        Text("Função"),
+                      children:[
+                        Text(authStore.name),
+                        Text(authStore.function),
                       ],
                     )
                   ],
@@ -64,11 +68,7 @@ class BuildSideBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12)),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                            const SignInPage()));
+                    authStore.userSignOut();
                   },
                   child: const Center(
                     child: Text(

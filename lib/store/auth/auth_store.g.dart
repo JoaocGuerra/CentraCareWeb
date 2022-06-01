@@ -55,6 +55,21 @@ mixin _$AuthStore on _AuthStore, Store {
     });
   }
 
+  late final _$nameAtom = Atom(name: '_AuthStore.name', context: context);
+
+  @override
+  String get name {
+    _$nameAtom.reportRead();
+    return super.name;
+  }
+
+  @override
+  set name(String value) {
+    _$nameAtom.reportWrite(value, super.name, () {
+      super.name = value;
+    });
+  }
+
   late final _$fetchUserAsyncAction =
       AsyncAction('_AuthStore.fetchUser', context: context);
 
@@ -90,7 +105,8 @@ mixin _$AuthStore on _AuthStore, Store {
     return '''
 user: ${user},
 hasUser: ${hasUser},
-function: ${function}
+function: ${function},
+name: ${name}
     ''';
   }
 }

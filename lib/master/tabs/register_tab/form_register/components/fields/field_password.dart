@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../../../../components/custom_button.dart';
 import '../../../../../../components/custom_textformfield.dart';
-import '../../../../../../store/tabs/register_tab/register_tab_store.dart';
+import '../../../../../../store/master_page/tabs/register_tab/register_tab_store.dart';
 
 class FormFieldPassword extends StatelessWidget {
   final RegisterTabStore registerTabStore =  GetIt.I<RegisterTabStore>();

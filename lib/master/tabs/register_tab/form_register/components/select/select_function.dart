@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../../../../store/tabs/register_tab/register_tab_store.dart';
+import '../../../../../../store/master_page/tabs/register_tab/register_tab_store.dart';
+
 
 class SelectFunction extends StatelessWidget {
   final RegisterTabStore registerTabStore =  GetIt.I<RegisterTabStore>();
@@ -56,8 +57,8 @@ class SelectFunction extends StatelessWidget {
                       itemBuilder: (BuildContext context) =>
                       <PopupMenuEntry<Function>>[
                         const PopupMenuItem<Function>(
-                          value: Function.SECRETARIA,
-                          child: Text('SECRETÁRIA'),
+                          value: Function.RECEPCIONISTA,
+                          child: Text('RECEPCIONISTA'),
                         ),
                         const PopupMenuItem<Function>(
                           value: Function.MEDICO,

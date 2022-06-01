@@ -1,9 +1,9 @@
 import 'package:centralcareweb/master/tabs/employess_tab/components/list/employees_list.dart';
-import 'package:centralcareweb/store/tabs/employees_tab/employees_tab_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../../store/master_page/tabs/employees_tab/employees_tab_store.dart';
 import 'components/text/employee_text.dart';
 
 class EmployeesTab extends StatelessWidget {

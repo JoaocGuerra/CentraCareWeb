@@ -1,4 +1,5 @@
 import 'package:centralcareweb/master/master_page.dart';
+import 'package:centralcareweb/recepcionista/recepicionista_page.dart';
 import 'package:centralcareweb/signIn/signIn_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -20,7 +21,7 @@ class Auth extends StatelessWidget {
           if(authStore.hasUser){
             if(authStore.function == "admin") return const MasterPage();
             if(authStore.function == "medico") print("Medico");
-            if(authStore.function == "secretaria") print("Secretaria");
+            if(authStore.function == "recepcionista") return const RecepicionistaPage();
           }
           return SignInPage();
         },

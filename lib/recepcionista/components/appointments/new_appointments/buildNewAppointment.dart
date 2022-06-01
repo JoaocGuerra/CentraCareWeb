@@ -2,8 +2,8 @@ import 'package:centralcareweb/components/responsive_builder.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
-import '../../components/header_text.dart';
-import '../../constans/app_constants.dart';
+import '../../../../components/header_text.dart';
+import '../../../../constans/app_constants.dart';
 
 class BuildNewAppointment extends StatelessWidget {
   const BuildNewAppointment({Key? key}) : super(key: key);
