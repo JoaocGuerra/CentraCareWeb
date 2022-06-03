@@ -1,4 +1,4 @@
-import 'package:centralcareweb/repository/insert_employee_repository.dart';
+import 'package:centralcareweb/repository/firebase_firestore/insert_employee_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';

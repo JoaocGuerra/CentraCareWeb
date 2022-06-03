@@ -39,7 +39,7 @@ abstract class _AppointmentsDoctorStore with Store {
 
       for(int i=0; i<lengthEmployee; i++){
         if(snapshot.docs[i].get('funcao') == "medico"){
-          String name = snapshot.docs[i].get('nome') + " " + snapshot.docs[i].get('sobrenome');
+          String name = snapshot.docs[i].get('nome') + " " + snapshot.docs[i].get('sobrenome')+" - "+snapshot.docs[i].get('especialidade');
           doctorNames.add(name);
           snapshot.docs[i].reference.collection('atendimentos').snapshots().listen((snapshotAppointment) {
 
@@ -60,9 +60,9 @@ abstract class _AppointmentsDoctorStore with Store {
                     listTreeNodePatients.add(
                         TreeNode(
                             content: TextButton(
-                              child: Text(patients[k]),
+                              child: Text(patients[k],overflow: TextOverflow.ellipsis,),
                               onPressed: () {
-                                showDetailsAppointment = !showDetailsAppointment;
+                                setShowDetailsAppointment(true);
                                 detailsAppointmentsDoctorStore.codigoPaciente = patients[k];
                                 detailsAppointmentsDoctorStore.codigoMedico =  snapshot.docs[i].id;
                                 detailsAppointmentsDoctorStore.diaMesAno = snapshotAppointment.docs[j].id;
@@ -88,6 +88,11 @@ abstract class _AppointmentsDoctorStore with Store {
       }
       loading = false;
     });
+  }
+
+  @action
+  void setShowDetailsAppointment(bool value){
+    showDetailsAppointment = value;
   }
 
 }

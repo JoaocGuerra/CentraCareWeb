@@ -5,8 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
 
-import '../store/auth/auth_store.dart';
-import '../store/master_page/tabs/register_tab/register_tab_store.dart';
+import '../../store/auth/auth_store.dart';
+import '../../store/master_page/tabs/register_tab/register_tab_store.dart';
 
 class InsertEmployeeRepository{
 
