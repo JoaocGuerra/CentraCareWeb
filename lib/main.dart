@@ -1,6 +1,7 @@
 import 'package:centralcareweb/master/master_page.dart';
 import 'package:centralcareweb/recepcionista/recepicionista_page.dart';
 import 'package:centralcareweb/signIn/signIn_page.dart';
+import 'package:centralcareweb/store/api/posicao_fila_store.dart';
 import 'package:centralcareweb/store/auth/auth_store.dart';
 import 'package:centralcareweb/store/master_page/tabs/employees_tab/employees_tab_store.dart';
 import 'package:centralcareweb/store/master_page/tabs/register_tab/register_tab_store.dart';
@@ -28,6 +29,8 @@ void setupLocators() {
 
   GetIt.I.registerSingleton(DetailsAppointmentsDoctorStore());
   GetIt.I.registerSingleton(AppointmentsDoctorStore());
+
+  GetIt.I.registerSingleton(PosicaoFilaStore());
 }
 
 class MyApp extends StatelessWidget {

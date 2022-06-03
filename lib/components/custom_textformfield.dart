@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class CustomTextFormField extends StatelessWidget {
+  final bool? enabled;
   final bool isPasswordType;
   final IconData icon;
   final String text;
@@ -12,6 +13,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
 
   const CustomTextFormField({
+    this.enabled,
     Key? key,
     required this.isPasswordType,
     required this.icon,
@@ -24,6 +26,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: enabled,
       inputFormatters: list,
       validator: validator,
       controller: textEditingController,

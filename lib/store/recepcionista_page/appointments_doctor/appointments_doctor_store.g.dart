@@ -85,6 +85,20 @@ mixin _$AppointmentsDoctorStore on _AppointmentsDoctorStore, Store {
         .run(() => super.fetchAppointmentsDoctors());
   }
 
+  late final _$_AppointmentsDoctorStoreActionController =
+      ActionController(name: '_AppointmentsDoctorStore', context: context);
+
+  @override
+  void setShowDetailsAppointment(bool value) {
+    final _$actionInfo = _$_AppointmentsDoctorStoreActionController.startAction(
+        name: '_AppointmentsDoctorStore.setShowDetailsAppointment');
+    try {
+      return super.setShowDetailsAppointment(value);
+    } finally {
+      _$_AppointmentsDoctorStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

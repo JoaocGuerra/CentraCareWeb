@@ -83,7 +83,7 @@ class BuildSideBar extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(kSpacing),
               child: Text(
-                "2022 Central Care lisence",
+                "2022 Central Care licence",
                 style: Theme.of(context).textTheme.caption,
               ),
             ),
