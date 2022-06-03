@@ -9,3 +9,4 @@ const kFontColorPallets = [
 ];
 const kBorderRadius = 10.0;
 const kSpacing = 20.0;
+const maxWidthBoxConstrains = 600.0;

@@ -1,4 +1,5 @@
-import 'package:centralcareweb/components/responsive_builder.dart';
+import 'package:centralcareweb/recepcionista/components/appointments/new_appointments/new_appointment.dart';
+import 'package:centralcareweb/recepcionista/components/appointments/new_appointments/register_patient.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +7,10 @@ import '../../../../components/header_text.dart';
 import '../../../../constans/app_constants.dart';
 
 class BuildNewAppointment extends StatelessWidget {
-  const BuildNewAppointment({Key? key}) : super(key: key);
+  BuildNewAppointment({Key? key}) : super(key: key);
+
+  bool step_one = true;
+  bool step_two = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18,18 +22,12 @@ class BuildNewAppointment extends StatelessWidget {
           Row(
             children: const [
               Expanded(child: HeaderText("Novo Agendamento")),
-              Icon(
-              EvaIcons.homeOutline
-              )
+              Icon(EvaIcons.homeOutline)
             ],
           ),
-          const SizedBox(height: 250,),
-          const Center(
-            child: Text(
-                "Insere os dados para cadastrar um paciente como tem no mobile\n"
-                    "Clica em continuar\nEscolhe o dados do agendamento\n"
-                    "Clica em agendar", textAlign: TextAlign.center,),
-          )
+          //TODO nese primeiro passo, inverter os valores dos parâmetros
+          RegisterPatient(step_one: step_one),
+          NewAppointment(step_two: step_two)
         ],
       ),
     );
