@@ -1,3 +1,4 @@
+import 'package:centralcareweb/store/recepcionista_page/show_home_store.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,7 @@ import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../utils/utils_datetime.dart';
-import 'details_appointments_doctor_store.dart';
+import 'details_appointments/details_appointments_doctor_store.dart';
 
 part 'appointments_doctor_store.g.dart';
 
@@ -15,6 +16,7 @@ class AppointmentsDoctorStore = _AppointmentsDoctorStore with _$AppointmentsDoct
 abstract class _AppointmentsDoctorStore with Store {
 
   final DetailsAppointmentsDoctorStore detailsAppointmentsDoctorStore =  GetIt.I<DetailsAppointmentsDoctorStore>();
+  final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
 
   @observable
   bool loading = false;
@@ -24,9 +26,6 @@ abstract class _AppointmentsDoctorStore with Store {
 
   @observable
   Map<String, dynamic> dataAppointments = Map<String, dynamic>();
-
-  @observable
-  bool showDetailsAppointment = false;
 
   @action
   Future<void> fetchAppointmentsDoctors() async {
@@ -62,7 +61,7 @@ abstract class _AppointmentsDoctorStore with Store {
                             content: TextButton(
                               child: Text(patients[k],overflow: TextOverflow.ellipsis,),
                               onPressed: () {
-                                setShowDetailsAppointment(true);
+                                showHomeStore.setShowDetailsAppointment(2);
                                 detailsAppointmentsDoctorStore.codigoPaciente = patients[k];
                                 detailsAppointmentsDoctorStore.codigoMedico =  snapshot.docs[i].id;
                                 detailsAppointmentsDoctorStore.diaMesAno = snapshotAppointment.docs[j].id;
@@ -89,10 +88,4 @@ abstract class _AppointmentsDoctorStore with Store {
       loading = false;
     });
   }
-
-  @action
-  void setShowDetailsAppointment(bool value){
-    showDetailsAppointment = value;
-  }
-
 }

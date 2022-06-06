@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../../../../../store/api/posicao_fila_store.dart';
-import '../../../../../../../store/recepcionista_page/appointments_doctor/details_appointments_doctor_store.dart';
+import '../../../../../../../store/recepcionista_page/appointments_doctor/details_appointments/details_appointments_doctor_store.dart';
 
 class PosicaoFila extends StatelessWidget {
   final PosicaoFilaStore posicaoFilaStore = PosicaoFilaStore();

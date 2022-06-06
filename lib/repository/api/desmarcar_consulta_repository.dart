@@ -1,4 +1,5 @@
 import 'package:centralcareweb/model/appointment_model.dart';
+import 'package:centralcareweb/store/recepcionista_page/show_home_store.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -10,7 +11,7 @@ class DesmarcarConsultaRepository{
 
   final _dio = Dio();
   final _db = FirebaseFirestore.instance;
-  final AppointmentsDoctorStore appointmentsDoctorStore =  GetIt.I<AppointmentsDoctorStore>();
+  final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
 
   Future<void> desmarcar(AppointmentModel appointmentModel) async {
 
@@ -22,7 +23,7 @@ class DesmarcarConsultaRepository{
 
     try{
       await _dio.delete(pathLocal + pathDeselectQuery, data: mapDelete);
-      appointmentsDoctorStore.setShowDetailsAppointment(false);
+      showHomeStore.setShowDetailsAppointment(1);
     }catch(err){
       print(err);
     }

@@ -2,6 +2,7 @@ import 'dart:core';
 
 class AppointmentModel{
 
+  late String nomeCompleto;
   late String codigoMedico, codigoPaciente, diaMesAno;
   late String nomeMedico, especialidadeMedico;
   late String inicioConsulta, terminoConsulta;
@@ -9,6 +10,7 @@ class AppointmentModel{
   late String receita;
 
   AppointmentModel(
+      this.nomeCompleto,
       this.codigoMedico,
       this.codigoPaciente,
       this.diaMesAno,

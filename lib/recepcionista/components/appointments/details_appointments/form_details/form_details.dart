@@ -11,9 +11,11 @@ import 'package:get_it/get_it.dart';
 
 import '../../../../../components/header_text.dart';
 import '../../../../../master/tabs/register_tab/form_register/components/button/button_register.dart';
-import '../../../../../store/recepcionista_page/appointments_doctor/details_appointments_doctor_store.dart';
-import 'components/text/text_inicio_details.dart';
+import '../../../../../store/recepcionista_page/appointments_doctor/details_appointments/details_appointments_doctor_store.dart';
+import 'components/select/select_hours.dart';
+import 'components/others/inicio_details.dart';
 import 'components/text/text_form_details.dart';
+import 'components/text/text_name_details.dart';
 
 class FormDetails extends StatelessWidget {
   final DetailsAppointmentsDoctorStore detailsAppointmentsDoctorStore =  GetIt.I<DetailsAppointmentsDoctorStore>();
@@ -50,8 +52,16 @@ class FormDetails extends StatelessWidget {
                       ),
                       const SizedBox(height: 40,),
 
-                      TextInicioDetails(),
+                      TextNameDetails(),
                       const SizedBox(height: 20,),
+
+                      InicioDetails(),
+                      const SizedBox(height: 20,),
+
+                      Visibility(
+                        visible: detailsAppointmentsDoctorStore.changeHours,
+                        child: SelectHours(),
+                      ),
 
                       FormFieldDetailsTermino(),
                       const SizedBox(height: 20,),
@@ -64,7 +74,7 @@ class FormDetails extends StatelessWidget {
 
                       ButtonUpdateAppointment(),
                       const SizedBox(height: 5),
-                      
+
                       Visibility(
                         visible: detailsAppointmentsDoctorStore.appointmentModel?.status=="marcada",
                           child: ButtonDeselectQuery()

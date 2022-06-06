@@ -62,7 +62,7 @@ class BodySignIn extends StatelessWidget {
                 ButtonIn(),
 
                 Center(
-                  child: signInPageStore.errorLogin ? TextError() : Text("")
+                    child: signInPageStore.errorLogin ? TextError() : Text("")
                 )
               ],
             ),
