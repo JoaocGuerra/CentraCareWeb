@@ -39,7 +39,7 @@ class InsertPatientRepository{
       mapInsert['foto'] = "https://cdn.icon-icons.com/icons2/1999/PNG/512/avatar_people_person_profile_user_woman_icon_123359.png";
     } else {
       mapInsert['foto'] = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Person_icon_%28the_Noun_Project_2817719%29.svg/1200px-Person_icon_%28the_Noun_Project_2817719%29.svg.png";
-    };
+    }
 
     await _db.collection('pacientes').doc(result.user?.uid).set(mapInsert);
 

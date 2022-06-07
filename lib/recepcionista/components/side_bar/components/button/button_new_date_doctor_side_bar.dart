@@ -23,9 +23,9 @@ class ButtonNewDateDoctorSideBar extends StatelessWidget {
           child: Center(
               child: TextButton(
                   onPressed: (){
-                    // showHomeStore.setShowDetailsAppointment(3);
+                    showHomeStore.setShowInHome(4);
                   },
-                  child: const Text("Nova Data Médico")
+                  child: const Text("Criar/Atualizar atendimento médico")
               )
           )
       ),

@@ -26,6 +26,7 @@ class FormDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     detailsAppointmentsDoctorStore.fetchDetailsAppointment();
+    detailsAppointmentsDoctorStore.setChangeHours(false);
     return Observer(
         builder: (_){
           return detailsAppointmentsDoctorStore.loading ?

@@ -8,7 +8,7 @@ import '../../../../../store/recepcionista_page/new_appointment/marcar_consulta_
 
 class SelectDoctor extends StatelessWidget {
   final MarcarConsultaStore marcarConsultaStore = GetIt.I<MarcarConsultaStore>();
-  final DoctorsStore doctorsStore =  GetIt.I<DoctorsStore>();
+  final DoctorsStoreNewAppointment doctorsStore =  GetIt.I<DoctorsStoreNewAppointment>();
 
   SelectDoctor({Key? key}) : super(key: key);
 

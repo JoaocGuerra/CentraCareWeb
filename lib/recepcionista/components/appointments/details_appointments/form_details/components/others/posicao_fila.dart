@@ -21,19 +21,6 @@ class PosicaoFila extends StatelessWidget {
         builder: (_){
           return Column(
             children: [
-              Text(
-                  posicaoFilaStore.status == "fechado"
-                      ? "Atendimento\nnão iniciado"
-                      :
-                  (posicaoFilaStore.status == "atendido"
-                      ? ""
-                      :
-                  "Posição\nna fila"),
-                  style: const TextStyle(
-                      fontSize: 15)),
-              const SizedBox(
-                height: 10,
-              ),
               Container(
                 height: 50,
                 width: 50,
@@ -48,31 +35,18 @@ class PosicaoFila extends StatelessWidget {
                 )
                     :
                 Center(
-                    child: posicaoFilaStore.status ==
-                        "fechado"
-                        ? const Icon(
-                      Icons.dangerous,
-                      color: Colors
-                          .white,
-                    )
-                        : (posicaoFilaStore.status ==
-                        "atendido"
-                        ? const Icon(
-                      Icons.check,
-                      color: Colors
-                          .white,
-                    )
-                        : Text(
-                      posicaoFilaStore.status,
-                      style: const TextStyle(
-                          fontWeight:
-                          FontWeight
-                              .bold,
-                          fontSize:
-                          20,
-                          color: Colors
-                              .white),
-                    ))),
+                  child: Text(
+                    posicaoFilaStore.posicao,
+                    style: const TextStyle(
+                        fontWeight:
+                        FontWeight
+                            .bold,
+                        fontSize:
+                        20,
+                        color: Colors
+                            .white),
+                  ),
+                ),
               )
             ],
           );

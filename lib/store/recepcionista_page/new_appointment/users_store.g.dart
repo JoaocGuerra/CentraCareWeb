@@ -25,19 +25,19 @@ mixin _$UsersStore on _UsersStore, Store {
     });
   }
 
-  late final _$dataUsersAtom =
-      Atom(name: '_UsersStore.dataUsers', context: context);
+  late final _$idUsersAtom =
+      Atom(name: '_UsersStore.idUsers', context: context);
 
   @override
-  Map<String, dynamic> get dataUsers {
-    _$dataUsersAtom.reportRead();
-    return super.dataUsers;
+  Map<String, dynamic> get idUsers {
+    _$idUsersAtom.reportRead();
+    return super.idUsers;
   }
 
   @override
-  set dataUsers(Map<String, dynamic> value) {
-    _$dataUsersAtom.reportWrite(value, super.dataUsers, () {
-      super.dataUsers = value;
+  set idUsers(Map<String, dynamic> value) {
+    _$idUsersAtom.reportWrite(value, super.idUsers, () {
+      super.idUsers = value;
     });
   }
 
@@ -53,7 +53,7 @@ mixin _$UsersStore on _UsersStore, Store {
   String toString() {
     return '''
 listUser: ${listUser},
-dataUsers: ${dataUsers}
+idUsers: ${idUsers}
     ''';
   }
 }

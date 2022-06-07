@@ -15,7 +15,10 @@ abstract class _PosicaoFilaStore with Store {
   bool loading = false;
 
   @observable
-  String status = "atendido";
+  String posicao = "";
+
+  @observable
+  String statusInAttendance = "";
 
   @action
   Future<void> fetchPositionQueue(String codigoMedico, String diaMesAno, String codigoPaciente) async {
@@ -23,8 +26,20 @@ abstract class _PosicaoFilaStore with Store {
         .doc(codigoMedico+diaMesAno).snapshots().listen((snapshot) async {
 
           loading = true;
-          status = await PosicaoFilaRepository().fetchPositionQueue(codigoMedico, diaMesAno, codigoPaciente);
+          posicao = await PosicaoFilaRepository().fetchPositionQueue(codigoMedico, diaMesAno, codigoPaciente);
           loading = false;
+
+    });
+  }
+
+  @action
+  Future<void> fetchPositionInAttendance(String codigoMedico, String diaMesAno) async {
+    _db.collection('fila')
+        .doc(codigoMedico+diaMesAno).snapshots().listen((snapshot) async {
+
+      loading = true;
+      statusInAttendance = await PosicaoFilaRepository().fetchPositionInAttendance(codigoMedico, diaMesAno);
+      loading = false;
 
     });
   }

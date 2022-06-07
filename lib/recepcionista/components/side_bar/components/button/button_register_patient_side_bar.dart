@@ -23,7 +23,7 @@ class ButtonRegisterPatientSideBar extends StatelessWidget {
           child: Center(
               child: TextButton(
                   onPressed: (){
-                    showHomeStore.setShowDetailsAppointment(3);
+                    showHomeStore.setShowInHome(3);
                   },
                   child: const Text("Cadastrar Paciente")
               )

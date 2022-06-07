@@ -6,7 +6,7 @@ class TexteConfirmNewAppointment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Text(
-      "Consulta agendada com sucesso.",
+      "Consulta agendada com sucesso",
       style: TextStyle(
           fontSize: 17,
           color: Colors.green,

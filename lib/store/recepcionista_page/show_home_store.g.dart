@@ -29,11 +29,11 @@ mixin _$ShowHomeStore on _ShowHomeStore, Store {
       ActionController(name: '_ShowHomeStore', context: context);
 
   @override
-  void setShowDetailsAppointment(int option) {
+  void setShowInHome(int option) {
     final _$actionInfo = _$_ShowHomeStoreActionController.startAction(
-        name: '_ShowHomeStore.setShowDetailsAppointment');
+        name: '_ShowHomeStore.setShowInHome');
     try {
-      return super.setShowDetailsAppointment(option);
+      return super.setShowInHome(option);
     } finally {
       _$_ShowHomeStoreActionController.endAction(_$actionInfo);
     }

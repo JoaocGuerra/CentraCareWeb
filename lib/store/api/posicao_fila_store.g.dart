@@ -25,19 +25,35 @@ mixin _$PosicaoFilaStore on _PosicaoFilaStore, Store {
     });
   }
 
-  late final _$statusAtom =
-      Atom(name: '_PosicaoFilaStore.status', context: context);
+  late final _$posicaoAtom =
+      Atom(name: '_PosicaoFilaStore.posicao', context: context);
 
   @override
-  String get status {
-    _$statusAtom.reportRead();
-    return super.status;
+  String get posicao {
+    _$posicaoAtom.reportRead();
+    return super.posicao;
   }
 
   @override
-  set status(String value) {
-    _$statusAtom.reportWrite(value, super.status, () {
-      super.status = value;
+  set posicao(String value) {
+    _$posicaoAtom.reportWrite(value, super.posicao, () {
+      super.posicao = value;
+    });
+  }
+
+  late final _$statusInAttendanceAtom =
+      Atom(name: '_PosicaoFilaStore.statusInAttendance', context: context);
+
+  @override
+  String get statusInAttendance {
+    _$statusInAttendanceAtom.reportRead();
+    return super.statusInAttendance;
+  }
+
+  @override
+  set statusInAttendance(String value) {
+    _$statusInAttendanceAtom.reportWrite(value, super.statusInAttendance, () {
+      super.statusInAttendance = value;
     });
   }
 
@@ -51,11 +67,23 @@ mixin _$PosicaoFilaStore on _PosicaoFilaStore, Store {
         super.fetchPositionQueue(codigoMedico, diaMesAno, codigoPaciente));
   }
 
+  late final _$fetchPositionInAttendanceAsyncAction = AsyncAction(
+      '_PosicaoFilaStore.fetchPositionInAttendance',
+      context: context);
+
+  @override
+  Future<void> fetchPositionInAttendance(
+      String codigoMedico, String diaMesAno) {
+    return _$fetchPositionInAttendanceAsyncAction
+        .run(() => super.fetchPositionInAttendance(codigoMedico, diaMesAno));
+  }
+
   @override
   String toString() {
     return '''
 loading: ${loading},
-status: ${status}
+posicao: ${posicao},
+statusInAttendance: ${statusInAttendance}
     ''';
   }
 }

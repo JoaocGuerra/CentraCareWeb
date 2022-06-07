@@ -7,6 +7,7 @@ import 'package:mobx/mobx.dart';
 
 import '../../../../model/appointment_model.dart';
 import '../../../../repository/api/desmarcar_consulta_repository.dart';
+import '../../show_home_store.dart';
 
 part 'details_appointments_doctor_store.g.dart';
 
@@ -39,6 +40,8 @@ abstract class _DetailsAppointmentsDoctorStore with Store {
   String codigoPaciente = "";
   String codigoMedico = "";
   String diaMesAno = "";
+
+  final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
 
   @action
   void setSelectedHour(String hour){
@@ -102,7 +105,8 @@ abstract class _DetailsAppointmentsDoctorStore with Store {
 
     try{
       loading = true;
-      await DesmarcarConsultaRepository().desmarcar(appointmentModel!);
+      await DesmarcarConsultaRepository().desmarcar(codigoMedico, diaMesAno, codigoPaciente);
+      showHomeStore.setShowInHome(1);
       loading = false;
     }catch(e){
       loading = false;

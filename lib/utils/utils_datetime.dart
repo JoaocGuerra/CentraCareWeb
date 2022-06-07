@@ -10,4 +10,15 @@ class UtilsDateTime{
 
   }
 
+  static String convertDatetimeSepairWithBar(String datetime){
+
+    List<String> datetimeSepair = datetime.split(" ");
+    List<String> dateSepair = datetimeSepair[0].split("-");
+
+    String dateFormated = dateSepair[2]+dateSepair[1]+dateSepair[0][2]+dateSepair[0][3];
+
+    return dateFormated;
+
+  }
+
 }

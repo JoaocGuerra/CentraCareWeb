@@ -7,6 +7,7 @@ import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../utils/utils_datetime.dart';
+import '../new_date_doctor/details_date_doctor/details_date_doctor_store.dart';
 import 'details_appointments/details_appointments_doctor_store.dart';
 
 part 'appointments_doctor_store.g.dart';
@@ -16,6 +17,7 @@ class AppointmentsDoctorStore = _AppointmentsDoctorStore with _$AppointmentsDoct
 abstract class _AppointmentsDoctorStore with Store {
 
   final DetailsAppointmentsDoctorStore detailsAppointmentsDoctorStore =  GetIt.I<DetailsAppointmentsDoctorStore>();
+  final DetailsDateDoctorStore detailsDateDoctorStore =  GetIt.I<DetailsDateDoctorStore>();
   final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
 
   @observable
@@ -61,7 +63,7 @@ abstract class _AppointmentsDoctorStore with Store {
                             content: TextButton(
                               child: Text(patients[k],overflow: TextOverflow.ellipsis,),
                               onPressed: () {
-                                showHomeStore.setShowDetailsAppointment(2);
+                                showHomeStore.setShowInHome(2);
                                 detailsAppointmentsDoctorStore.codigoPaciente = patients[k];
                                 detailsAppointmentsDoctorStore.codigoMedico =  snapshot.docs[i].id;
                                 detailsAppointmentsDoctorStore.diaMesAno = snapshotAppointment.docs[j].id;
@@ -73,7 +75,14 @@ abstract class _AppointmentsDoctorStore with Store {
                 }
                 listTreeNodeDate.add(
                     TreeNode(
-                      content: Text(UtilsDateTime.convertFormatDate(snapshotAppointment.docs[j].id)),
+                      content: TextButton(
+                        onPressed: () {
+                          showHomeStore.setShowInHome(5);
+                          detailsDateDoctorStore.codigoMedico = snapshot.docs[i].id;
+                          detailsDateDoctorStore.diaMesAno = snapshotAppointment.docs[j].id;
+                        },
+                        child: Text(UtilsDateTime.convertFormatDate(snapshotAppointment.docs[j].id)),
+                      ),
                       children: listTreeNodePatients,
                     )
                 );

@@ -28,7 +28,7 @@ class DetailsAppointments extends StatelessWidget {
                 IconButton(
                   icon: Icon(EvaIcons.arrowBack),
                   onPressed: () {
-                    showHomeStore.setShowDetailsAppointment(1);
+                    showHomeStore.setShowInHome(1);
                   },
                 ),
                 SizedBox(width: 10,),
@@ -38,10 +38,7 @@ class DetailsAppointments extends StatelessWidget {
                 )),
               ],
             ),
-            // const SizedBox(height: 50,),
-            Center(
-              child: FormDetails(),
-            )
+            FormDetails()
           ],
         ),
       );

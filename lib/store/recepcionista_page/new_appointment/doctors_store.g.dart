@@ -8,9 +8,9 @@ part of 'doctors_store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$DoctorsStore on _DoctorsStore, Store {
+mixin _$DoctorsStoreNewAppointment on _DoctorsStoreNewAppointment, Store {
   late final _$loadingAtom =
-      Atom(name: '_DoctorsStore.loading', context: context);
+      Atom(name: '_DoctorsStoreNewAppointment.loading', context: context);
 
   @override
   bool get loading {
@@ -26,7 +26,7 @@ mixin _$DoctorsStore on _DoctorsStore, Store {
   }
 
   late final _$doctorNamesAtom =
-      Atom(name: '_DoctorsStore.doctorNames', context: context);
+      Atom(name: '_DoctorsStoreNewAppointment.doctorNames', context: context);
 
   @override
   List<String> get doctorNames {
@@ -42,7 +42,7 @@ mixin _$DoctorsStore on _DoctorsStore, Store {
   }
 
   late final _$doctorIDAtom =
-      Atom(name: '_DoctorsStore.doctorID', context: context);
+      Atom(name: '_DoctorsStoreNewAppointment.doctorID', context: context);
 
   @override
   List<String> get doctorID {
@@ -58,7 +58,7 @@ mixin _$DoctorsStore on _DoctorsStore, Store {
   }
 
   late final _$fetchDoctorsAsyncAction =
-      AsyncAction('_DoctorsStore.fetchDoctors', context: context);
+      AsyncAction('_DoctorsStoreNewAppointment.fetchDoctors', context: context);
 
   @override
   Future<void> fetchDoctors() {

@@ -19,7 +19,7 @@ class InsertQueueRepository{
   Future<void> insertQueue() async{
       Map<String, dynamic> mapInsert = new Map<String, dynamic>();
 
-      String id = usersStore.dataUsers[marcarConsultaStore.userController.text];
+      String id = usersStore.idUsers[marcarConsultaStore.userController.text];
 
       mapInsert["codigo_medico"] = marcarConsultaStore.selectedDoctor;
       mapInsert["nome_medico"] = marcarConsultaStore.nameDoctor;
@@ -30,6 +30,8 @@ class InsertQueueRepository{
       mapInsert["status"] = "marcada";
       mapInsert["termino"] = "-";
       mapInsert["receita"] = "";
+
+      print(mapInsert);
 
       await _db.collection('pacientes')
           .doc(id)

@@ -23,7 +23,7 @@ class ButtonNewAppointmentSideBar extends StatelessWidget {
           child: Center(
               child: TextButton(
                   onPressed: (){
-                    showHomeStore.setShowDetailsAppointment(1);
+                    showHomeStore.setShowInHome(1);
                   },
                   child: Text("Nova Agendamento")
               )

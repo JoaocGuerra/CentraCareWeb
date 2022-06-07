@@ -17,7 +17,7 @@ abstract class _UsersStore with Store {
   List<String> listUser = [];
 
   @observable
-  Map<String, dynamic> dataUsers = <String, dynamic>{};
+  Map<String, dynamic> idUsers = <String, dynamic>{};
 
   @action
   Future<void> fetchUsers() async {
@@ -25,6 +25,7 @@ abstract class _UsersStore with Store {
     _db.collection('pacientes').snapshots().listen((snapshot) {
 
       listUser = [];
+      idUsers = <String, dynamic>{};
       
       int lengthPatients = snapshot.docs.length;
       
@@ -35,7 +36,7 @@ abstract class _UsersStore with Store {
 
         listUser = List.from(listUser..add(nameAndPhone));
 
-        dataUsers[nameAndPhone] = snapshot.docs[i].get("id");
+        idUsers[nameAndPhone] = snapshot.docs[i].get("id");
 
       }
       

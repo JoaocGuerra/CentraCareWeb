@@ -12,6 +12,9 @@ import 'package:centralcareweb/store/recepcionista_page/new_appointment/doctors_
 import 'package:centralcareweb/store/recepcionista_page/new_appointment/especialidades_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/new_appointment/marcar_consulta_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/new_appointment/users_store.dart';
+import 'package:centralcareweb/store/recepcionista_page/new_date_doctor/details_date_doctor/details_date_doctor_store.dart';
+import 'package:centralcareweb/store/recepcionista_page/new_date_doctor/doctor_store.dart';
+import 'package:centralcareweb/store/recepcionista_page/new_date_doctor/new_date_doctor_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/register_patient/register_patient_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/show_home_store.dart';
 import 'package:centralcareweb/store/signIn/sign_in_page_store.dart';
@@ -29,13 +32,15 @@ void main() async {
 }
 
 void setupLocators() {
+  GetIt.I.registerSingleton(ShowHomeStore());
+
   GetIt.I.registerSingleton(RegisterTabStore());
   GetIt.I.registerSingleton(SignInPageStore());
   GetIt.I.registerSingleton(AuthStore());
   GetIt.I.registerSingleton(EmployeesTabStore());
 
-  GetIt.I.registerSingleton(ShowHomeStore());
   GetIt.I.registerSingleton(DetailsAppointmentsDoctorStore());
+  GetIt.I.registerSingleton(DetailsDateDoctorStore());
   GetIt.I.registerSingleton(AppointmentsDoctorStore());
 
   GetIt.I.registerSingleton(HorasDisponiveisStore());
@@ -44,9 +49,12 @@ void setupLocators() {
 
   GetIt.I.registerSingleton(MarcarConsultaStore());
   GetIt.I.registerSingleton(EspecialidadesStore());
-  GetIt.I.registerSingleton(DoctorsStore());
+  GetIt.I.registerSingleton(DoctorsStoreNewAppointment());
   GetIt.I.registerSingleton(DateStore());
   GetIt.I.registerSingleton(UsersStore());
+
+  GetIt.I.registerSingleton(NewDateDoctorStore());
+  GetIt.I.registerSingleton(DoctorsStoreNewDate());
 }
 
 class MyApp extends StatelessWidget {

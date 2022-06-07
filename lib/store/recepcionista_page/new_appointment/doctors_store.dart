@@ -6,9 +6,9 @@ import 'marcar_consulta_store.dart';
 
 part 'doctors_store.g.dart';
 
-class DoctorsStore = _DoctorsStore with _$DoctorsStore;
+class DoctorsStoreNewAppointment = _DoctorsStoreNewAppointment with _$DoctorsStoreNewAppointment;
 
-abstract class _DoctorsStore with Store {
+abstract class _DoctorsStoreNewAppointment with Store {
 
   final _db = FirebaseFirestore.instance;
   final MarcarConsultaStore marcarConsultaStore = GetIt.I<MarcarConsultaStore>();
