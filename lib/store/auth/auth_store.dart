@@ -17,6 +17,9 @@ abstract class _AuthStore with Store {
   @observable
   String function = "";
 
+  @observable
+  String name = "";
+
   @action
   setUser(User user){
     this.user = user;
@@ -31,6 +34,9 @@ abstract class _AuthStore with Store {
           if(snapshotUser.exists){
             hasUser = true;
             function = snapshotUser.get('funcao');
+            if(function!="admin"){
+              name = snapshotUser.get('nome') + " " + snapshotUser.get('sobrenome');
+            }
           }
         });
       }

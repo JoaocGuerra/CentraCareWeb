@@ -1,22 +1,23 @@
 import 'package:brasil_fields/brasil_fields.dart';
+import 'package:centralcareweb/store/recepcionista_page/register_patient/register_patient_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../../../../components/custom_textformfield.dart';
-import '../../../../../../store/tabs/register_tab/register_tab_store.dart';
+import '../../../../../../store/master_page/tabs/register_tab/register_tab_store.dart';
 
 class FormFieldBirthday extends StatelessWidget {
-  final RegisterTabStore registerTabStore =  GetIt.I<RegisterTabStore>();
+  final RegisterPatientStore registerPatientStore =  GetIt.I<RegisterPatientStore>();
 
   FormFieldBirthday({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: BoxConstraints(maxWidth: registerTabStore.maxWidthBoxConstrains),
+      constraints: BoxConstraints(maxWidth: registerPatientStore.maxWidthBoxConstrains),
       child: CustomTextFormField(
-        textEditingController: registerTabStore.birthdayController,
+        textEditingController: registerPatientStore.birthdayController,
         isPasswordType: false,
         icon: Icons.calendar_today,
         text: 'Data de Nascimento',

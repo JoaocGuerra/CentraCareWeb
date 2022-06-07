@@ -9,3 +9,12 @@ const kFontColorPallets = [
 ];
 const kBorderRadius = 10.0;
 const kSpacing = 20.0;
+const maxWidthBoxConstrains = 600.0;
+
+const String pathLocal = "http://192.168.0.10:5000";
+const String pathInsertQueue = "/fila/inserir";
+const String pathUpdateQueue = "/fila/update";
+const String pathReadPositionQueue = "/fila/read";
+const String pathDeselectQuery = "/fila/delete";
+const String pathAvailableTimes = "/horarios-disponiveis-medico";
+const String pathReadPositionQueueAppointment = "/atendimento/read";
