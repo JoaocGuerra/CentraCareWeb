@@ -3,7 +3,7 @@ import 'package:centralcareweb/medico/components/on_appointment/build_on_appoint
 import 'package:flutter/material.dart';
 
 import '../components/responsive_builder.dart';
-import '../recepcionista/components/buildSideBar.dart';
+import '../components/buildSideBar.dart';
 
 class MedicoPage extends StatefulWidget {
   const MedicoPage({Key? key}) : super(key: key);

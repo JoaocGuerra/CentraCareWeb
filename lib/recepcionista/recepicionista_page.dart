@@ -3,7 +3,7 @@ library recepcionista;
 import 'package:centralcareweb/components/responsive_builder.dart';
 import 'package:centralcareweb/recepcionista/components/appointments/buildAppointments.dart';
 import 'package:centralcareweb/recepcionista/components/appointments/new_appointments/buildNewAppointment.dart';
-import 'package:centralcareweb/recepcionista/components/buildSideBar.dart';
+import 'package:centralcareweb/components/buildSideBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
