@@ -19,6 +19,7 @@ import 'package:centralcareweb/store/recepcionista_page/new_date_doctor/new_date
 import 'package:centralcareweb/store/recepcionista_page/register_patient/register_patient_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/show_home_store.dart';
 import 'package:centralcareweb/store/signIn/sign_in_page_store.dart';
+import 'package:centralcareweb/widgets/html_editor.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';

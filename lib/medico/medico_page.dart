@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../components/responsive_builder.dart';
 import '../recepcionista/components/side_bar/build_side_bar.dart';
+import 'components/side_bar/build_side_bar_doctor.dart';
 
 class MedicoPage extends StatefulWidget {
   const MedicoPage({Key? key}) : super(key: key);
@@ -21,16 +22,21 @@ class _MedicoPageState extends State<MedicoPage> {
             : Drawer(
                 child: SafeArea(
                   child: SingleChildScrollView(
-                    child: BuildSideBar(),
+                    controller: ScrollController(initialScrollOffset: 0),
+                    child: BuildSideBarDoctor(),
                   ),
                 ),
               ),
         body: SafeArea(
             child: ResponsiveBuilder(mobileBuilder: (context, constraints) {
           return SingleChildScrollView(
+            controller: ScrollController(initialScrollOffset: 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [BuildOnAppointmentCard(), BuildNextPatients()],
+              children: [
+                BuildOnAppointmentCard(),
+                BuildNextPatients()
+              ],
             ),
           );
         }, tabletBuilder: (context, constraints) {
@@ -40,8 +46,8 @@ class _MedicoPageState extends State<MedicoPage> {
               Flexible(
                 flex: constraints.maxWidth > 800 ? 8 : 7,
                 child: SingleChildScrollView(
-                    controller: ScrollController(),
-                    child: const BuildOnAppointmentCard()),
+                    controller: ScrollController(initialScrollOffset: 0),
+                    child: BuildOnAppointmentCard()),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height,
@@ -50,7 +56,7 @@ class _MedicoPageState extends State<MedicoPage> {
               Flexible(
                 flex: 4,
                 child: SingleChildScrollView(
-                  controller: ScrollController(),
+                  controller: ScrollController(initialScrollOffset: 0),
                   child: const BuildNextPatients(),
                 ),
               ),
@@ -62,10 +68,10 @@ class _MedicoPageState extends State<MedicoPage> {
             children: [
               Flexible(
                   flex: constraints.maxWidth > 1350 ? 3 : 4,
-                  child: BuildSideBar()),
+                  child: BuildSideBarDoctor()),
               Flexible(
                 flex: constraints.maxWidth > 1350 ? 10 : 9,
-                child: const BuildOnAppointmentCard(),
+                child: BuildOnAppointmentCard(),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height,

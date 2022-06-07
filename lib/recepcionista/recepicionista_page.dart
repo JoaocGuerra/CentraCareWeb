@@ -43,6 +43,7 @@ class _RecepicionistaPageState extends State<RecepicionistaPage> {
                   child: ResponsiveBuilder(
                       mobileBuilder: (context, constraints){
                         return SingleChildScrollView(
+                          controller: ScrollController(initialScrollOffset: 0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -63,7 +64,7 @@ class _RecepicionistaPageState extends State<RecepicionistaPage> {
                             Flexible(
                               flex: constraints.maxWidth > 800 ? 8 : 7,
                               child: SingleChildScrollView(
-                                controller: ScrollController(),
+                                controller: ScrollController(initialScrollOffset: 0),
                                 child: showHomeStore.showInHome == 1 ? BuildNewAppointment() :
                                 showHomeStore.showInHome == 2 ? DetailsAppointments() :
                                 showHomeStore.showInHome == 3 ? RegisterPatient() :
