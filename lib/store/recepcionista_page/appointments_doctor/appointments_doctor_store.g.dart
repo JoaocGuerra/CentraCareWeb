@@ -57,24 +57,6 @@ mixin _$AppointmentsDoctorStore on _AppointmentsDoctorStore, Store {
     });
   }
 
-  late final _$showDetailsAppointmentAtom = Atom(
-      name: '_AppointmentsDoctorStore.showDetailsAppointment',
-      context: context);
-
-  @override
-  bool get showDetailsAppointment {
-    _$showDetailsAppointmentAtom.reportRead();
-    return super.showDetailsAppointment;
-  }
-
-  @override
-  set showDetailsAppointment(bool value) {
-    _$showDetailsAppointmentAtom
-        .reportWrite(value, super.showDetailsAppointment, () {
-      super.showDetailsAppointment = value;
-    });
-  }
-
   late final _$fetchAppointmentsDoctorsAsyncAction = AsyncAction(
       '_AppointmentsDoctorStore.fetchAppointmentsDoctors',
       context: context);
@@ -85,27 +67,12 @@ mixin _$AppointmentsDoctorStore on _AppointmentsDoctorStore, Store {
         .run(() => super.fetchAppointmentsDoctors());
   }
 
-  late final _$_AppointmentsDoctorStoreActionController =
-      ActionController(name: '_AppointmentsDoctorStore', context: context);
-
-  @override
-  void setShowDetailsAppointment(bool value) {
-    final _$actionInfo = _$_AppointmentsDoctorStoreActionController.startAction(
-        name: '_AppointmentsDoctorStore.setShowDetailsAppointment');
-    try {
-      return super.setShowDetailsAppointment(value);
-    } finally {
-      _$_AppointmentsDoctorStoreActionController.endAction(_$actionInfo);
-    }
-  }
-
   @override
   String toString() {
     return '''
 loading: ${loading},
 doctorNames: ${doctorNames},
-dataAppointments: ${dataAppointments},
-showDetailsAppointment: ${showDetailsAppointment}
+dataAppointments: ${dataAppointments}
     ''';
   }
 }

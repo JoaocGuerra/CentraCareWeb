@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../../../../../store/recepcionista_page/appointments_doctor/details_appointments_doctor_store.dart';
-
+import '../../../../../../../store/recepcionista_page/appointments_doctor/details_appointments/details_appointments_doctor_store.dart';
 
 class ButtonDeselectQuery extends StatelessWidget {
   final DetailsAppointmentsDoctorStore detailsAppointmentsDoctorStore =  GetIt.I<DetailsAppointmentsDoctorStore>();

@@ -37,6 +37,29 @@ class InsertEmployeeRepository{
     if(registerTabStore.function=="MEDICO") {
       mapInsert["especialidade"] = registerTabStore.specialtyController.text;
       mapInsert["photo"] = "https://cdn.icon-icons.com/icons2/1999/PNG/512/avatar_man_people_person_profile_user_icon_123385.png";
+
+      await _db.collection('especialidades').doc(registerTabStore.specialtyController.text).snapshots().listen((snapshot) {
+
+        Map<String, dynamic> dataUpdate = Map<String, dynamic>();
+        List<dynamic> listaFuncionarios = [];
+
+        if(snapshot.exists){
+          listaFuncionarios = snapshot.get("lista_funcionarios");
+          listaFuncionarios.add(result.user?.uid ?? "");
+
+          dataUpdate['lista_funcionarios'] = listaFuncionarios;
+
+          _db.collection('especialidades').doc(registerTabStore.specialtyController.text).set(dataUpdate);
+        }else{
+          listaFuncionarios.add(result.user?.uid ?? "");
+
+          dataUpdate['lista_funcionarios'] = listaFuncionarios;
+
+          _db.collection('especialidades').doc(registerTabStore.specialtyController.text).set(dataUpdate);
+        }
+
+      });
+
     }
 
       await _db.collection('funcionarios').doc(result.user?.uid).set(mapInsert);

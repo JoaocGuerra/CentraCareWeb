@@ -4,7 +4,6 @@ import 'package:centralcareweb/master/tabs/settings_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import '../signIn/signIn_page.dart';
 import '../store/auth/auth_store.dart';
 
 class MasterPage extends StatefulWidget {
