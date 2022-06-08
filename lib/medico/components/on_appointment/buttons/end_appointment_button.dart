@@ -8,7 +8,6 @@ class EndAppointmentButton extends StatelessWidget {
     return Center(
       child: Container(
         height: 50,
-        width: 150,
         decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.5),
             borderRadius: BorderRadius.circular(12)),
@@ -17,7 +16,7 @@ class EndAppointmentButton extends StatelessWidget {
           child: const Center(
             child: Text(
               "Encerrar Atendimento",
-              style: TextStyle(color: Colors.black, fontSize: 10),
+              style: TextStyle(color: Colors.black, fontSize: 15),
             ),
           ),
         ),

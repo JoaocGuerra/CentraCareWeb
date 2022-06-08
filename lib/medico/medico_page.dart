@@ -3,7 +3,6 @@ import 'package:centralcareweb/medico/components/on_appointment/build_on_appoint
 import 'package:flutter/material.dart';
 
 import '../components/responsive_builder.dart';
-import '../recepcionista/components/side_bar/build_side_bar.dart';
 import 'components/side_bar/build_side_bar_doctor.dart';
 
 class MedicoPage extends StatefulWidget {
@@ -35,6 +34,7 @@ class _MedicoPageState extends State<MedicoPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 BuildOnAppointmentCard(),
+                // BuildHome(),
                 BuildNextPatients()
               ],
             ),
@@ -47,7 +47,9 @@ class _MedicoPageState extends State<MedicoPage> {
                 flex: constraints.maxWidth > 800 ? 8 : 7,
                 child: SingleChildScrollView(
                     controller: ScrollController(initialScrollOffset: 0),
-                    child: BuildOnAppointmentCard()),
+                    child: BuildOnAppointmentCard()
+                    // child: BuildHome(),
+                    ),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height,
@@ -72,6 +74,7 @@ class _MedicoPageState extends State<MedicoPage> {
               Flexible(
                 flex: constraints.maxWidth > 1350 ? 10 : 9,
                 child: BuildOnAppointmentCard(),
+                // child: BuildHome(),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height,

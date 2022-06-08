@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+
 import '../../../constans/app_constants.dart';
 
 class NextPatientCard extends StatelessWidget {
-
   const NextPatientCard({
     required this.name,
     this.dividerColor,
@@ -50,7 +50,6 @@ class NextPatientCard extends StatelessWidget {
       ),
     );
   }
-
 
   Widget _buildSubtitle() {
     return Text(

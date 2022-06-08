@@ -26,7 +26,9 @@ class BuildNextPatients extends StatelessWidget {
                 )
               ],
             ),
-            const SizedBox(height: kSpacing,),
+            const SizedBox(
+              height: kSpacing,
+            ),
             const NextPatientCard(name: "João Guerra"),
             const NextPatientCard(name: "Marcelo Alves"),
             const NextPatientCard(name: "Pedro Henrique"),
@@ -52,7 +54,6 @@ class BuildNextPatients extends StatelessWidget {
             const NextPatientCard(name: "Pedro Henrique"),
             const NextPatientCard(name: "Maria Bonita"),
             const NextPatientCard(name: "Zefa da Galinha"),
-
           ],
         ),
       ),
