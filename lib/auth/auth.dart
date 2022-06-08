@@ -20,9 +20,9 @@ class Auth extends StatelessWidget {
       body: Observer(
         builder: (_) {
           if(authStore.hasUser){
-            if(authStore.function == "admin") return const MasterPage();
-            if(authStore.function == "medico") return const MedicoPage();
-            if(authStore.function == "recepcionista") return const RecepicionistaPage();
+            if(authStore.function == "admin") return MasterPage();
+            if(authStore.function == "medico") return MedicoPage();
+            if(authStore.function == "recepcionista") return RecepicionistaPage();
           }
           return SignInPage();
         },

@@ -7,6 +7,8 @@ import 'package:centralcareweb/recepcionista/components/side_bar/components/text
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../recepcionista/components/side_bar/components/text/text_doctor_side_bar.dart';
+
 class BuildSideBarDoctor extends StatelessWidget {
   const BuildSideBarDoctor({Key? key}) : super(key: key);
 
@@ -26,7 +28,7 @@ class BuildSideBarDoctor extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: kSpacing),
               child: Column(
-                children: const [
+                children: [
                   HomeButton(),
                   SizedBox(height: 20),
                   GoAppointmentButton()

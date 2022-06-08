@@ -1,5 +1,5 @@
 import 'package:centralcareweb/recepcionista/components/appointments/details_appointments/form_details/form_details.dart';
-import 'package:centralcareweb/store/recepcionista_page/show_home_store.dart';
+import 'package:centralcareweb/store/show_pages/show_home_store.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -28,7 +28,7 @@ class DetailsAppointments extends StatelessWidget {
                 IconButton(
                   icon: Icon(EvaIcons.arrowBack),
                   onPressed: () {
-                    showHomeStore.setShowInHome(1);
+                    showHomeStore.setShowInHomeReceptionist(1);
                   },
                 ),
                 SizedBox(width: 10,),

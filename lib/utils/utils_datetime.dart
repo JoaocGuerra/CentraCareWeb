@@ -21,4 +21,15 @@ class UtilsDateTime{
 
   }
 
+  static String getDatetimeNow(){
+
+    DateTime dateNow = DateTime.now();
+    String day = dateNow.day.toString().length == 1 ? "0"+dateNow.day.toString() : dateNow.day.toString();
+    String month = dateNow.month.toString().length == 1 ? "0"+dateNow.month.toString() : dateNow.month.toString();
+    String year = dateNow.year.toString()[2] + dateNow.year.toString()[3];
+
+    return day+month+year;
+
+  }
+
 }

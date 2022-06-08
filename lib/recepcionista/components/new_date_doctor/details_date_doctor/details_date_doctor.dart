@@ -6,7 +6,7 @@ import 'package:get_it/get_it.dart';
 
 import '../../../../components/header_text.dart';
 import '../../../../constans/app_constants.dart';
-import '../../../../store/recepcionista_page/show_home_store.dart';
+import '../../../../store/show_pages/show_home_store.dart';
 import 'components/body_details_date_doctor.dart';
 
 
@@ -29,7 +29,7 @@ class DetailsDateDoctor extends StatelessWidget {
                 IconButton(
                   icon: Icon(EvaIcons.arrowBack),
                   onPressed: () {
-                    showHomeStore.setShowInHome(1);
+                    showHomeStore.setShowInHomeReceptionist(1);
                   },
                 ),
                 SizedBox(width: 10,),

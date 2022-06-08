@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+
+import '../../../../store/show_pages/show_home_store.dart';
 
 class GoAppointmentButton extends StatelessWidget {
-  const GoAppointmentButton({Key? key}) : super(key: key);
+  final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
+
+  GoAppointmentButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +18,9 @@ class GoAppointmentButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            showHomeStore.setShowInHomeDoctor(2);
+          },
           child: const Center(
             child: Text(
               "Atendimentos",

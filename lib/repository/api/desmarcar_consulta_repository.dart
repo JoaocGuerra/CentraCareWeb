@@ -1,5 +1,5 @@
 import 'package:centralcareweb/model/appointment_model.dart';
-import 'package:centralcareweb/store/recepcionista_page/show_home_store.dart';
+import 'package:centralcareweb/store/show_pages/show_home_store.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';

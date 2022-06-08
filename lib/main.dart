@@ -6,6 +6,8 @@ import 'package:centralcareweb/store/api/posicao_fila_store.dart';
 import 'package:centralcareweb/store/auth/auth_store.dart';
 import 'package:centralcareweb/store/master_page/tabs/employees_tab/employees_tab_store.dart';
 import 'package:centralcareweb/store/master_page/tabs/register_tab/register_tab_store.dart';
+import 'package:centralcareweb/store/medico_page/html_editor_store.dart';
+import 'package:centralcareweb/store/medico_page/next_patients/next_patients_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/appointments_doctor/appointments_doctor_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/appointments_doctor/details_appointments/details_appointments_doctor_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/new_appointment/date_store.dart';
@@ -17,9 +19,8 @@ import 'package:centralcareweb/store/recepcionista_page/new_date_doctor/details_
 import 'package:centralcareweb/store/recepcionista_page/new_date_doctor/doctor_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/new_date_doctor/new_date_doctor_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/register_patient/register_patient_store.dart';
-import 'package:centralcareweb/store/recepcionista_page/show_home_store.dart';
+import 'package:centralcareweb/store/show_pages/show_home_store.dart';
 import 'package:centralcareweb/store/signIn/sign_in_page_store.dart';
-import 'package:centralcareweb/widgets/html_editor.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -57,6 +58,9 @@ void setupLocators() {
 
   GetIt.I.registerSingleton(NewDateDoctorStore());
   GetIt.I.registerSingleton(DoctorsStoreNewDate());
+
+  GetIt.I.registerSingleton(HtmlEditorStore());
+  GetIt.I.registerSingleton(NextPatientsStore());
 }
 
 class MyApp extends StatelessWidget {
@@ -70,7 +74,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: MedicoPage(),
+      home: Auth(),
       );
   }
 }
