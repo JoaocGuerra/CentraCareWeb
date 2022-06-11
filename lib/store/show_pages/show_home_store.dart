@@ -13,7 +13,7 @@ abstract class _ShowHomeStore with Store {
 
   @observable
   int showInHomeDoctor = 1;
-  //1 = BuildHome, 2 = BuildOnAppointmentCard
+  //1 = BuildHome, 2 = BuildOnAppointmentCard, 3 = DetailsAppointmentDoctor
 
   @action
   void setShowInHomeReceptionist(int option){

@@ -1,6 +1,3 @@
-import 'package:centralcareweb/master/master_page.dart';
-import 'package:centralcareweb/medico/medico_page.dart';
-import 'package:centralcareweb/recepcionista/recepicionista_page.dart';
 import 'package:centralcareweb/store/api/horas_disponiveis_store.dart';
 import 'package:centralcareweb/store/api/posicao_fila_store.dart';
 import 'package:centralcareweb/store/auth/auth_store.dart';
@@ -8,6 +5,7 @@ import 'package:centralcareweb/store/master_page/tabs/employees_tab/employees_ta
 import 'package:centralcareweb/store/master_page/tabs/register_tab/register_tab_store.dart';
 import 'package:centralcareweb/store/medico_page/html_editor_store.dart';
 import 'package:centralcareweb/store/medico_page/next_patients/next_patients_store.dart';
+import 'package:centralcareweb/store/medico_page/query_doctor/query_doctor_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/appointments_doctor/appointments_doctor_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/appointments_doctor/details_appointments/details_appointments_doctor_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/new_appointment/date_store.dart';
@@ -61,6 +59,7 @@ void setupLocators() {
 
   GetIt.I.registerSingleton(HtmlEditorStore());
   GetIt.I.registerSingleton(NextPatientsStore());
+  GetIt.I.registerSingleton(QueryDoctorStore());
 }
 
 class MyApp extends StatelessWidget {

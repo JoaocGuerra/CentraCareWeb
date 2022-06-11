@@ -53,9 +53,4 @@ class BuildOnAppointmentCard extends StatelessWidget {
       ),
     );
   }
-
-  bool _isMobile(context) {
-    if (ResponsiveBuilder.isMobile(context)) return true;
-    return false;
-  }
 }

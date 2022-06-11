@@ -25,19 +25,19 @@ mixin _$NextPatientsStore on _NextPatientsStore, Store {
     });
   }
 
-  late final _$pacientesAtom =
-      Atom(name: '_NextPatientsStore.pacientes', context: context);
+  late final _$namePatientsAtom =
+      Atom(name: '_NextPatientsStore.namePatients', context: context);
 
   @override
-  List<dynamic> get pacientes {
-    _$pacientesAtom.reportRead();
-    return super.pacientes;
+  List<dynamic> get namePatients {
+    _$namePatientsAtom.reportRead();
+    return super.namePatients;
   }
 
   @override
-  set pacientes(List<dynamic> value) {
-    _$pacientesAtom.reportWrite(value, super.pacientes, () {
-      super.pacientes = value;
+  set namePatients(List<dynamic> value) {
+    _$namePatientsAtom.reportWrite(value, super.namePatients, () {
+      super.namePatients = value;
     });
   }
 
@@ -54,7 +54,7 @@ mixin _$NextPatientsStore on _NextPatientsStore, Store {
   String toString() {
     return '''
 loading: ${loading},
-pacientes: ${pacientes}
+namePatients: ${namePatients}
     ''';
   }
 }

@@ -51,7 +51,7 @@ class _RecepicionistaPageState extends State<RecepicionistaPage> {
                               showHomeStore.showInHomeReceptionist == 2 ? DetailsAppointments() :
                               showHomeStore.showInHomeReceptionist == 3 ? RegisterPatient() :
                               showHomeStore.showInHomeReceptionist == 4 ? NewDateDoctor() :
-                              showHomeStore.showInHomeReceptionist == 5 ? DetailsDateDoctor() : Center(),
+                              showHomeStore.showInHomeReceptionist == 5 ? DetailsDateDoctor(recepcionista: true,) : Center(),
                               BuildAppointments(),
                             ],
                           ),
@@ -69,7 +69,7 @@ class _RecepicionistaPageState extends State<RecepicionistaPage> {
                                 showHomeStore.showInHomeReceptionist == 2 ? DetailsAppointments() :
                                 showHomeStore.showInHomeReceptionist == 3 ? RegisterPatient() :
                                 showHomeStore.showInHomeReceptionist == 4 ? NewDateDoctor() :
-                                showHomeStore.showInHomeReceptionist == 5 ? DetailsDateDoctor() : Center(),
+                                showHomeStore.showInHomeReceptionist == 5 ? DetailsDateDoctor(recepcionista: true,) : Center(),
                               ),
                             ),
                             SizedBox(
@@ -101,7 +101,7 @@ class _RecepicionistaPageState extends State<RecepicionistaPage> {
                                 showHomeStore.showInHomeReceptionist == 2 ? DetailsAppointments() :
                                 showHomeStore.showInHomeReceptionist == 3 ? RegisterPatient() :
                                 showHomeStore.showInHomeReceptionist == 4 ? NewDateDoctor() :
-                                showHomeStore.showInHomeReceptionist == 5 ? DetailsDateDoctor() : Center(),
+                                showHomeStore.showInHomeReceptionist == 5 ? DetailsDateDoctor(recepcionista: true,) : Center(),
                                 controller: ScrollController(initialScrollOffset: 0),
                               ),
                             ),

@@ -12,12 +12,13 @@ class BuildNextPatients extends StatelessWidget {
   BuildNextPatients({Key? key}) : super(key: key);
   final NextPatientsStore nextPatientsStore =  GetIt.I<NextPatientsStore>();
 
+
+
   @override
   Widget build(BuildContext context) {
     nextPatientsStore.fetchPatientsToday();
     return Observer(
         builder: (_){
-
           return SingleChildScrollView(
             controller: ScrollController(initialScrollOffset: 0),
             child: Padding(
@@ -45,9 +46,9 @@ class BuildNextPatients extends StatelessWidget {
                   SizedBox(
                       height: MediaQuery.of(context).size.height,
                       child: ListView.builder(
-                        itemCount: nextPatientsStore.pacientes.length,
+                        itemCount: nextPatientsStore.namePatients.length,
                         itemBuilder: (context,i){
-                          return NextPatientCard(name: nextPatientsStore.pacientes[i]);
+                          return NextPatientCard(name: nextPatientsStore.namePatients[i]);
                         },
                       )
                   )

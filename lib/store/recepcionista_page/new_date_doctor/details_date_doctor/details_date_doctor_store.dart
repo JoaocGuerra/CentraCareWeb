@@ -16,6 +16,8 @@ class DetailsDateDoctorStore = _DetailsDateDoctorStore with _$DetailsDateDoctorS
 
 abstract class _DetailsDateDoctorStore with Store {
 
+  bool recepcionist = true;
+
   @observable
   bool loading = false;
 
@@ -54,7 +56,7 @@ abstract class _DetailsDateDoctorStore with Store {
     try{
       loading = true;
       await DeleteDateDoctorRepository().desmarcar();
-      showHomeStore.setShowInHomeReceptionist(1);
+      recepcionist ? showHomeStore.setShowInHomeReceptionist(1) : showHomeStore.setShowInHomeDoctor(1);
       loading = false;
     }catch(e){
       loading = false;

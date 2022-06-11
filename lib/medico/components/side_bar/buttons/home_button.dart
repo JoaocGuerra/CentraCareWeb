@@ -24,7 +24,6 @@ class HomeButton extends StatelessWidget {
           child: const Center(
             child: Text(
               "Início",
-              style: TextStyle(color: Colors.black, fontSize: 15),
             ),
           ),
         ),

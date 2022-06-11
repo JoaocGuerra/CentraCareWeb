@@ -1,4 +1,9 @@
 import 'package:centralcareweb/master/tabs/register_tab/form_register/components/fields/field_password.dart';
+import 'package:centralcareweb/recepcionista/components/register_patient/form_patient/components/fields/field_birthday.dart';
+import 'package:centralcareweb/recepcionista/components/register_patient/form_patient/components/fields/field_email.dart';
+import 'package:centralcareweb/recepcionista/components/register_patient/form_patient/components/fields/field_last_name.dart';
+import 'package:centralcareweb/recepcionista/components/register_patient/form_patient/components/fields/field_name.dart';
+import 'package:centralcareweb/recepcionista/components/register_patient/form_patient/components/fields/field_password.dart';
 import 'package:centralcareweb/recepcionista/components/register_patient/form_patient/components/text/text_confirm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -32,22 +37,22 @@ class FormPatient extends StatelessWidget {
               const SizedBox(
                 height: 100,
               ),
-              FormFieldEmail(),
+              FormFieldEmailRegisterPatient(),
               const SizedBox(
                 height: kSpacing,
               ),
 
-              FormFieldPassword(),
+              FormFieldPasswordRegisterPatient(),
               const SizedBox(
                 height: kSpacing,
               ),
 
-              FormFieldName(),
+              FormFieldNameRegisterPatient(),
               const SizedBox(
                 height: kSpacing,
               ),
 
-              FormFielLastName(),
+              FormFielLastNameRegisterPatient(),
               const SizedBox(
                 height: kSpacing,
               ),
@@ -57,12 +62,12 @@ class FormPatient extends StatelessWidget {
                 height: kSpacing,
               ),
 
-              FormFieldPhone(),
+              FormFieldPhoneRegisterPatient(),
               const SizedBox(
                 height: kSpacing,
               ),
 
-              FormFieldBirthday(),
+              FormFieldBirthdayRegisterPatient(),
               const SizedBox(
                 height: kSpacing,
               ),

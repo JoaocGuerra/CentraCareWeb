@@ -30,8 +30,8 @@ class BuildSideBarDoctor extends StatelessWidget {
               child: Column(
                 children: [
                   HomeButton(),
-                  SizedBox(height: 20),
-                  GoAppointmentButton()
+                  const SizedBox(height: 20),
+                  // GoAppointmentButton()
                 ],
               ),
             )

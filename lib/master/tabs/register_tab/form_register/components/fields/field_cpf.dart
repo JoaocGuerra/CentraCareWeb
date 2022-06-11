@@ -6,10 +6,10 @@ import 'package:get_it/get_it.dart';
 import '../../../../../../components/custom_textformfield.dart';
 import '../../../../../../store/master_page/tabs/register_tab/register_tab_store.dart';
 
-class FormFieldCpf extends StatelessWidget {
+class FormFieldCpfRegisterTab extends StatelessWidget {
   final RegisterTabStore registerTabStore =  GetIt.I<RegisterTabStore>();
 
-  FormFieldCpf({Key? key}) : super(key: key);
+  FormFieldCpfRegisterTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

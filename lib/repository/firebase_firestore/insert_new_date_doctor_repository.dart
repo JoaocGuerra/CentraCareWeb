@@ -27,7 +27,9 @@ class InsertNewDateDoctorRepository{
     await _db.collection('funcionarios')
         .doc(doctorsStoreNewDate.idDoctors[newDateDoctorStore.doctorController.text])
         .collection('atendimentos').doc(newDateDoctorStore.dataAtendimento).set(mapInsert);
+
   }
+
 
 
 }

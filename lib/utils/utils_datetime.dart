@@ -21,14 +21,32 @@ class UtilsDateTime{
 
   }
 
+  static DateTime convertStringToDatetime(String date){
+
+    String day = date[0]+date[1];
+    String month = date[2]+date[3];
+    String year = "20"+date[4]+date[5];
+
+    return DateTime.parse(
+        year+"-"+month+"-"+day
+    );
+
+  }
+
   static String getDatetimeNow(){
 
     DateTime dateNow = DateTime.now();
-    String day = dateNow.day.toString().length == 1 ? "0"+dateNow.day.toString() : dateNow.day.toString();
-    String month = dateNow.month.toString().length == 1 ? "0"+dateNow.month.toString() : dateNow.month.toString();
+    String day = addZeroIfNecessary(dateNow.day.toString());
+    String month = addZeroIfNecessary(dateNow.month.toString());
     String year = dateNow.year.toString()[2] + dateNow.year.toString()[3];
 
     return day+month+year;
+
+  }
+
+  static String addZeroIfNecessary(var value){
+
+    return  value.toString().length == 1 ? "0"+value.toString() : value.toString();
 
   }
 

@@ -4,10 +4,10 @@ import 'package:get_it/get_it.dart';
 import '../../../../../../store/master_page/tabs/register_tab/register_tab_store.dart';
 
 
-class ButtonRegister extends StatelessWidget {
+class ButtonRegisterTab extends StatelessWidget {
   final RegisterTabStore registerTabStore =  GetIt.I<RegisterTabStore>();
 
-  ButtonRegister({Key? key}) : super(key: key);
+  ButtonRegisterTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

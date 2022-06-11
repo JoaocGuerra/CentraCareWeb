@@ -13,10 +13,13 @@ import 'components/body_details_date_doctor.dart';
 class DetailsDateDoctor extends StatelessWidget {
   final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
   final DetailsDateDoctorStore detailsDateDoctorStore =  GetIt.I<DetailsDateDoctorStore>();
-  DetailsDateDoctor({Key? key}) : super(key: key);
+  final bool recepcionista;
+
+  DetailsDateDoctor({Key? key, required this.recepcionista}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    detailsDateDoctorStore.recepcionist = recepcionista;
     detailsDateDoctorStore.fetchDetailsDate();
     return Observer(builder: (_){
       return Padding(
@@ -29,7 +32,10 @@ class DetailsDateDoctor extends StatelessWidget {
                 IconButton(
                   icon: Icon(EvaIcons.arrowBack),
                   onPressed: () {
-                    showHomeStore.setShowInHomeReceptionist(1);
+                    detailsDateDoctorStore.recepcionist ?
+                    showHomeStore.setShowInHomeReceptionist(1)
+                        :
+                    showHomeStore.setShowInHomeDoctor(1);
                   },
                 ),
                 SizedBox(width: 10,),

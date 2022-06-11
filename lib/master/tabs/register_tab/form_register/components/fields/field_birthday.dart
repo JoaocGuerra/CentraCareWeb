@@ -7,17 +7,17 @@ import 'package:get_it/get_it.dart';
 import '../../../../../../components/custom_textformfield.dart';
 import '../../../../../../store/master_page/tabs/register_tab/register_tab_store.dart';
 
-class FormFieldBirthday extends StatelessWidget {
-  final RegisterPatientStore registerPatientStore =  GetIt.I<RegisterPatientStore>();
+class FormFieldBirthdayRegisterTab extends StatelessWidget {
+  final RegisterTabStore registerTabStore =  GetIt.I<RegisterTabStore>();
 
-  FormFieldBirthday({Key? key}) : super(key: key);
+  FormFieldBirthdayRegisterTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: BoxConstraints(maxWidth: registerPatientStore.maxWidthBoxConstrains),
+      constraints: BoxConstraints(maxWidth: registerTabStore.maxWidthBoxConstrains),
       child: CustomTextFormField(
-        textEditingController: registerPatientStore.birthdayController,
+        textEditingController: registerTabStore.birthdayController,
         isPasswordType: false,
         icon: Icons.calendar_today,
         text: 'Data de Nascimento',

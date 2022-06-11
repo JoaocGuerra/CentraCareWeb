@@ -43,7 +43,7 @@ abstract class _AppointmentsDoctorStore with Store {
           String name = snapshot.docs[i].get('nome') + " " + snapshot.docs[i].get('sobrenome')+" - "+snapshot.docs[i].get('especialidade');
           doctorNames.add(name);
           snapshot.docs[i].reference.collection('atendimentos').snapshots().listen((snapshotAppointment) {
-
+            loading = true;
             List<TreeNode> listTreeNodeDate = [];
             int lengthAppointments = snapshotAppointment.size;
 
@@ -88,6 +88,7 @@ abstract class _AppointmentsDoctorStore with Store {
 
             }
             dataAppointments[name] = listTreeNodeDate;
+            loading = false;
           });
         }
       }

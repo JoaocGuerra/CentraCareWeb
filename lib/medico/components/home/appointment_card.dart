@@ -1,3 +1,6 @@
+import 'package:centralcareweb/store/auth/auth_store.dart';
+import 'package:centralcareweb/store/recepcionista_page/new_date_doctor/details_date_doctor/details_date_doctor_store.dart';
+import 'package:centralcareweb/utils/utils_datetime.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -6,56 +9,70 @@ import '../../../store/show_pages/show_home_store.dart';
 
 class AppointmentCard extends StatelessWidget {
   final ShowHomeStore showHomeStore = GetIt.I<ShowHomeStore>();
+  final DetailsDateDoctorStore detailsDateDoctorStore = GetIt.I<DetailsDateDoctorStore>();
+  final AuthStore authStore = GetIt.I<AuthStore>();
 
   AppointmentCard({
     Key? key,
     required this.label,
+    required this.dayMonthYear,
     required this.details,
   }) : super(key: key);
 
   final String label;
+  final String dayMonthYear;
   final String details;
   final Color primary = Colors.blue;
   final Color onPrimary = Colors.white;
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: Material(
-        child: InkWell(
-          onTap: () {},
-          child: Container(
-            width: 250,
-            height: 250,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [primary, primary.withOpacity(.7)],
-                begin: AlignmentDirectional.topCenter,
-                end: AlignmentDirectional.bottomCenter,
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: Material(
+          child: InkWell(
+            onTap: () {
+              detailsDateDoctorStore.diaMesAno = dayMonthYear;
+              detailsDateDoctorStore.codigoMedico = authStore.user?.uid ?? "";
+              showHomeStore.setShowInHomeDoctor(3);
+            },
+            child: Container(
+              width: 250,
+              height: 250,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [primary, primary.withOpacity(.7)],
+                  begin: AlignmentDirectional.topCenter,
+                  end: AlignmentDirectional.bottomCenter,
+                ),
               ),
-            ),
-            child: _BackgroundDecoration(
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 120,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          _buildLabel(),
-                          const SizedBox(height: 20),
-                          _buildDetails(),
-                        ],
+              child: _BackgroundDecoration(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 120,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            _buildLabel(),
+                            const SizedBox(height: 20),
+                            _buildDetails(),
+                          ],
+                        ),
                       ),
-                    ),
-                    const Spacer(flex: 2),
-                    _appointmentButton(),
-                  ],
+                      const Spacer(flex: 2),
+                      dayMonthYear == UtilsDateTime.getDatetimeNow() ?
+                      _appointmentButton()
+                        :
+                      const SizedBox(),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -5,10 +5,10 @@ import '../../../../../../components/custom_textformfield.dart';
 import '../../../../../../store/master_page/tabs/register_tab/register_tab_store.dart';
 import '../../../../../../store/recepcionista_page/register_patient/register_patient_store.dart';
 
-class FormFieldPassword extends StatelessWidget {
+class FormFieldPasswordRegisterPatient extends StatelessWidget {
   final RegisterPatientStore registerPatientStore =  GetIt.I<RegisterPatientStore>();
 
-  FormFieldPassword({Key? key}) : super(key: key);
+  FormFieldPasswordRegisterPatient({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

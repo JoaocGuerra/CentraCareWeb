@@ -15,8 +15,8 @@ class DeleteDateDoctorRepository{
     _db.collection('funcionarios')
         .doc(detailsDateDoctorStore.codigoMedico)
         .collection('atendimentos')
-        .doc(detailsDateDoctorStore.diaMesAno).snapshots().listen((snapshot) { 
-          
+        .doc(detailsDateDoctorStore.diaMesAno).snapshots().listen((snapshot) {
+
           List<dynamic> pacientes = snapshot['pacientes'];
 
           for(int i=0; i < pacientes.length; i++){
@@ -26,9 +26,9 @@ class DeleteDateDoctorRepository{
                 pacientes[i].toString()
             );
           }
-          
+
     });
-    
+
     await _db.collection('funcionarios')
               .doc(detailsDateDoctorStore.codigoMedico)
               .collection('atendimentos')

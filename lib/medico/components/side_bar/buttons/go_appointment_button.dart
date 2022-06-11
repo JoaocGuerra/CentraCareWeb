@@ -24,7 +24,6 @@ class GoAppointmentButton extends StatelessWidget {
           child: const Center(
             child: Text(
               "Atendimentos",
-              style: TextStyle(color: Colors.black, fontSize: 15),
             ),
           ),
         ),

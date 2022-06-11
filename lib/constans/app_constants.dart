@@ -18,3 +18,4 @@ const String pathReadPositionQueue = "/fila/read";
 const String pathDeselectQuery = "/fila/delete";
 const String pathAvailableTimes = "/horarios-disponiveis-medico";
 const String pathReadPositionQueueAppointment = "/atendimento/read";
+const String pathInsertAppointment = "/atendimento/inserir";
