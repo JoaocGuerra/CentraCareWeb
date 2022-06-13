@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'next_patients_store.dart';
+part of 'patient_on_appointment_store.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,9 +8,9 @@ part of 'next_patients_store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$NextPatientsStore on _NextPatientsStore, Store {
+mixin _$PatientOnAppointmentStore on _PatientOnAppointmentStore, Store {
   late final _$loadingAtom =
-      Atom(name: '_NextPatientsStore.loading', context: context);
+      Atom(name: '_PatientOnAppointmentStore.loading', context: context);
 
   @override
   bool get loading {
@@ -26,7 +26,7 @@ mixin _$NextPatientsStore on _NextPatientsStore, Store {
   }
 
   late final _$namePatientsAtom =
-      Atom(name: '_NextPatientsStore.namePatients', context: context);
+      Atom(name: '_PatientOnAppointmentStore.namePatients', context: context);
 
   @override
   List<dynamic> get namePatients {
@@ -42,7 +42,7 @@ mixin _$NextPatientsStore on _NextPatientsStore, Store {
   }
 
   late final _$idPatientsAtom =
-      Atom(name: '_NextPatientsStore.idPatients', context: context);
+      Atom(name: '_PatientOnAppointmentStore.idPatients', context: context);
 
   @override
   Map<String, dynamic> get idPatients {
@@ -57,8 +57,8 @@ mixin _$NextPatientsStore on _NextPatientsStore, Store {
     });
   }
 
-  late final _$attendanceStartAtom =
-      Atom(name: '_NextPatientsStore.attendanceStart', context: context);
+  late final _$attendanceStartAtom = Atom(
+      name: '_PatientOnAppointmentStore.attendanceStart', context: context);
 
   @override
   bool get attendanceStart {
@@ -73,8 +73,9 @@ mixin _$NextPatientsStore on _NextPatientsStore, Store {
     });
   }
 
-  late final _$fetchPatientsTodayAsyncAction =
-      AsyncAction('_NextPatientsStore.fetchPatientsToday', context: context);
+  late final _$fetchPatientsTodayAsyncAction = AsyncAction(
+      '_PatientOnAppointmentStore.fetchPatientsToday',
+      context: context);
 
   @override
   Future<void> fetchPatientsToday() {
@@ -82,26 +83,17 @@ mixin _$NextPatientsStore on _NextPatientsStore, Store {
         .run(() => super.fetchPatientsToday());
   }
 
-  late final _$fetchAttendanceStartAsyncAction =
-      AsyncAction('_NextPatientsStore.fetchAttendanceStart', context: context);
-
-  @override
-  Future<void> fetchAttendanceStart() {
-    return _$fetchAttendanceStartAsyncAction
-        .run(() => super.fetchAttendanceStart());
-  }
-
-  late final _$_NextPatientsStoreActionController =
-      ActionController(name: '_NextPatientsStore', context: context);
+  late final _$_PatientOnAppointmentStoreActionController =
+      ActionController(name: '_PatientOnAppointmentStore', context: context);
 
   @override
   dynamic setAttendanceStart(bool value) {
-    final _$actionInfo = _$_NextPatientsStoreActionController.startAction(
-        name: '_NextPatientsStore.setAttendanceStart');
+    final _$actionInfo = _$_PatientOnAppointmentStoreActionController
+        .startAction(name: '_PatientOnAppointmentStore.setAttendanceStart');
     try {
       return super.setAttendanceStart(value);
     } finally {
-      _$_NextPatientsStoreActionController.endAction(_$actionInfo);
+      _$_PatientOnAppointmentStoreActionController.endAction(_$actionInfo);
     }
   }
 

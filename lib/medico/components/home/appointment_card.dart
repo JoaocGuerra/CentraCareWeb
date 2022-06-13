@@ -1,15 +1,20 @@
+import 'package:centralcareweb/repository/firebase_firestore/create_queue_attendance.dart';
 import 'package:centralcareweb/store/auth/auth_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/new_date_doctor/details_date_doctor/details_date_doctor_store.dart';
 import 'package:centralcareweb/utils/utils_datetime.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../../repository/api/posicao_fila_repository.dart';
+import '../../../store/medico_page/next_patients/next_patients_store.dart';
 import '../../../store/show_pages/show_home_store.dart';
 
 class AppointmentCard extends StatelessWidget {
   final ShowHomeStore showHomeStore = GetIt.I<ShowHomeStore>();
   final DetailsDateDoctorStore detailsDateDoctorStore = GetIt.I<DetailsDateDoctorStore>();
+  final NextPatientsStore nextPatientsStore = GetIt.I<NextPatientsStore>();
   final AuthStore authStore = GetIt.I<AuthStore>();
 
   AppointmentCard({
@@ -67,10 +72,13 @@ class AppointmentCard extends StatelessWidget {
                         ),
                       ),
                       const Spacer(flex: 2),
-                      dayMonthYear == UtilsDateTime.getDatetimeNow() ?
-                      _appointmentButton()
-                        :
-                      const SizedBox(),
+                      Observer(builder: (_){
+                        nextPatientsStore.attendanceStart;
+                        return dayMonthYear == UtilsDateTime.getDatetimeNow() ?
+                        _appointmentButton(nextPatientsStore.attendanceStart)
+                            :
+                        const SizedBox();
+                      })
                     ],
                   ),
                 ),
@@ -116,17 +124,21 @@ class AppointmentCard extends StatelessWidget {
     );
   }
 
-  Widget _appointmentButton() {
+  Widget _appointmentButton(bool attendanceStart) {
     return ElevatedButton.icon(
-      onPressed: () {
+      onPressed: () async {
         showHomeStore.setShowInHomeDoctor(2);
+        if(!attendanceStart){
+          CreateQueueAttendanceRepository().createQueue(authStore.user?.uid ?? "", dayMonthYear);
+          PosicaoFilaRepository().updatePatientAnswered(authStore.user?.uid ?? "", dayMonthYear, 0);
+        }
       },
       style: ElevatedButton.styleFrom(
         primary: onPrimary,
         onPrimary: primary,
       ),
-      icon: const Icon(EvaIcons.checkmarkCircle2Outline),
-      label: const Text("Iniciar Atendimentos"),
+      icon: Icon(attendanceStart ? EvaIcons.refresh : EvaIcons.checkmarkCircle2Outline),
+      label: Text(attendanceStart ? "Continuar Atendimentos" : "Iniciar Atendimentos"),
     );
   }
 }

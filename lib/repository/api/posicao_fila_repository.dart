@@ -32,4 +32,20 @@ class PosicaoFilaRepository{
 
   }
 
+  Future<void> updatePatientAnswered(String doctor, String date, int posicao) async{
+
+    Map<String, dynamic> dataUpdatePatientAnswered = <String, dynamic>{};
+
+    dataUpdatePatientAnswered['codigo_medico'] = doctor;
+    dataUpdatePatientAnswered['dia_mes_ano'] = date;
+    dataUpdatePatientAnswered['posicao_paciente_atendido'] = posicao;
+
+    try{
+      await _dio.put(pathLocal+pathUpdatePatientAnswered, data: dataUpdatePatientAnswered);
+    }catch(e){
+      return Future.error('Erros: PosicaoFilaRepository.updatePatientAnswered');
+    }
+
+  }
+
 }

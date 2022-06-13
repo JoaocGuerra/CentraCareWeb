@@ -9,14 +9,12 @@ import '../../../components/header_text.dart';
 import '../../../constans/app_constants.dart';
 
 class BuildNextPatients extends StatelessWidget {
-  BuildNextPatients({Key? key}) : super(key: key);
   final NextPatientsStore nextPatientsStore =  GetIt.I<NextPatientsStore>();
 
-
+  BuildNextPatients({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    nextPatientsStore.fetchPatientsToday();
     return Observer(
         builder: (_){
           return SingleChildScrollView(

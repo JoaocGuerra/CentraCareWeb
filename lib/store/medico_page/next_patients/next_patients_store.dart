@@ -17,6 +17,7 @@ abstract class _NextPatientsStore with Store {
   final _db = FirebaseFirestore.instance;
   final AuthStore authStore =  GetIt.I<AuthStore>();
   final PosicaoFilaStore posicaoFilaStore = PosicaoFilaStore();
+  final String diaMesAno = UtilsDateTime.getDatetimeNow();
 
   @observable
   bool loading = false;
@@ -24,46 +25,73 @@ abstract class _NextPatientsStore with Store {
   @observable
   List<dynamic> namePatients = [];
 
+  @observable
   Map<String, dynamic> idPatients = <String, dynamic>{};
+
+  @observable
+  bool attendanceStart = false;
+  @action
+  setAttendanceStart(bool value){
+    attendanceStart = value;
+  }
 
   @action
   Future<void> fetchPatientsToday() async {
 
-    String diaMesAno = UtilsDateTime.getDatetimeNow();
+    final String? codigoMedico = authStore.user?.uid;
 
     _db.collection('funcionarios')
-        .doc(authStore.user?.uid)
+        .doc(codigoMedico)
         .collection('atendimentos')
         .doc(diaMesAno)
         .snapshots().listen((snapshot) async {
 
           namePatients = List.from([]);
-          print("Aqui tbm");
           idPatients = <String, dynamic>{};
 
           if(snapshot.exists){
             loading = true;
             List<dynamic> patients = await snapshot['pacientes'];
 
-            // for(int i=0; i<patients.length; i++){
-            //   // print(await _db.collection('pacientes')
-            //   //     .doc(patients[i]));
-            //   await _db.collection('pacientes')
-            //       .doc(patients[i]).get()
-            //       .then((snapshotPatient) async{
-            //         String name = snapshotPatient['nome'] + " " + snapshotPatient['sobrenome'];
-            //         // String posicao = await PosicaoFilaRepository()
-            //         //     .fetchPositionQueue(authStore.user?.uid ?? "" , diaMesAno, patients[i]);
-            //         // print(posicao);
-            //         idPatients[name] = patients[i];
-            //         namePatients = List.from(namePatients..add(name));
-            //         print("AQUI");
-            //   });
-            // }
+            for(int i=0; i<patients.length; i++){
+              await _db.collection('pacientes')
+                  .doc(patients[i]).get()
+                  .then((snapshotPatient) async {
+                    await _db.collection('pacientes')
+                        .doc(patients[i])
+                        .collection('consultas')
+                        .doc(codigoMedico!+diaMesAno).get()
+                        .then((snapshotQuery) async {
+                          String name = snapshotQuery['inicio']+" - "+snapshotPatient['nome'] + " " + snapshotPatient['sobrenome'];
+                          if(!(namePatients.contains(name))){
+                            idPatients[name] = {'id':patients[i],'inicio':snapshotQuery['inicio']};
+                            namePatients = List.from(namePatients..add(name));
+                          }
+                    });
+              });
+            }
+            namePatients.sort();
             loading = false;
           }
 
     });
+
   }
 
+  @action
+  Future<void> fetchAttendanceStart()async {
+
+    final String? codigoMedico = authStore.user?.uid;
+
+    _db.collection('fila')
+        .doc(codigoMedico!+diaMesAno)
+        .get().then((snapshot){
+
+          if(snapshot.exists){
+            setAttendanceStart(true);
+          }
+
+    });
+
+  }
 }

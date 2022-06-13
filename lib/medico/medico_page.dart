@@ -9,17 +9,21 @@ import 'package:get_it/get_it.dart';
 
 import '../components/responsive_builder.dart';
 import '../store/medico_page/html_editor_store.dart';
+import '../store/medico_page/next_patients/next_patients_store.dart';
 import 'components/home/build_home.dart';
 import 'components/side_bar/build_side_bar_doctor.dart';
 
 class MedicoPage extends StatelessWidget {
   final HtmlEditorStore htmlEditorStore =  GetIt.I<HtmlEditorStore>();
   final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
+  final NextPatientsStore nextPatientsStore =  GetIt.I<NextPatientsStore>();
 
   MedicoPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    nextPatientsStore.fetchPatientsToday();
+    nextPatientsStore.fetchAttendanceStart();
     return Observer(
       builder: (BuildContext context) {
         showHomeStore.showInHomeDoctor;
