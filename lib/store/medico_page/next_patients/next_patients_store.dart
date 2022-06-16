@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../repository/api/posicao_fila_repository.dart';
+import '../../../repository/api/salvar_pdf_repository.dart';
 import '../../../utils/utils_datetime.dart';
 import '../../api/posicao_fila_store.dart';
 import '../../auth/auth_store.dart';
@@ -21,6 +22,8 @@ abstract class _NextPatientsStore with Store {
 
   @observable
   bool loading = false;
+  @observable
+  bool loadingBuildNextPatients = false;
 
   @observable
   List<dynamic> namePatients = [];
@@ -29,11 +32,17 @@ abstract class _NextPatientsStore with Store {
   Map<String, dynamic> idPatients = <String, dynamic>{};
 
   @observable
+  int patientPosition = 0;
+
+  @observable
   bool attendanceStart = false;
   @action
   setAttendanceStart(bool value){
     attendanceStart = value;
   }
+
+  @observable
+  bool attendanceFinish = false;
 
   @action
   Future<void> fetchPatientsToday() async {
@@ -50,7 +59,7 @@ abstract class _NextPatientsStore with Store {
           idPatients = <String, dynamic>{};
 
           if(snapshot.exists){
-            loading = true;
+            loadingBuildNextPatients = true;
             List<dynamic> patients = await snapshot['pacientes'];
 
             for(int i=0; i<patients.length; i++){
@@ -71,7 +80,7 @@ abstract class _NextPatientsStore with Store {
               });
             }
             namePatients.sort();
-            loading = false;
+            loadingBuildNextPatients = false;
           }
 
     });
@@ -94,4 +103,20 @@ abstract class _NextPatientsStore with Store {
     });
 
   }
+
+  @action
+  Future<void> fetchNextPatient(var txt)async {
+
+    try{
+      loading = true;
+      await PosicaoFilaRepository().updatePatientAnswered(authStore.user?.uid ?? "", diaMesAno, patientPosition);
+      await SalvarPDFRepository().savePDF(authStore.user?.uid ?? "", diaMesAno, patientPosition,txt);
+      loading = false;
+    }catch(e){
+      loading = false;
+      print(e);
+    }
+
+  }
+
 }

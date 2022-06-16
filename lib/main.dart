@@ -3,8 +3,8 @@ import 'package:centralcareweb/store/api/posicao_fila_store.dart';
 import 'package:centralcareweb/store/auth/auth_store.dart';
 import 'package:centralcareweb/store/master_page/tabs/employees_tab/employees_tab_store.dart';
 import 'package:centralcareweb/store/master_page/tabs/register_tab/register_tab_store.dart';
-import 'package:centralcareweb/store/medico_page/html_editor_store.dart';
 import 'package:centralcareweb/store/medico_page/next_patients/next_patients_store.dart';
+import 'package:centralcareweb/store/medico_page/next_patients/patient_on_appointment/patient_on_appointment_store.dart';
 import 'package:centralcareweb/store/medico_page/query_doctor/query_doctor_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/appointments_doctor/appointments_doctor_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/appointments_doctor/details_appointments/details_appointments_doctor_store.dart';
@@ -24,6 +24,13 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import 'auth/auth.dart';
+
+
+import 'package:html/parser.dart' show parse;
+import 'package:pdf/widgets.dart' as pw;
+import 'dart:typed_data';
+import 'dart:html' as html;
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -57,9 +64,9 @@ void setupLocators() {
   GetIt.I.registerSingleton(NewDateDoctorStore());
   GetIt.I.registerSingleton(DoctorsStoreNewDate());
 
-  GetIt.I.registerSingleton(HtmlEditorStore());
   GetIt.I.registerSingleton(NextPatientsStore());
   GetIt.I.registerSingleton(QueryDoctorStore());
+  GetIt.I.registerSingleton(PatientOnAppointmentStore());
 }
 
 class MyApp extends StatelessWidget {

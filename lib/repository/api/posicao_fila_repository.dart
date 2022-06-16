@@ -1,10 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
+import 'package:get_it/get_it.dart';
 
 import '../../constans/app_constants.dart';
+import '../../store/medico_page/next_patients/next_patients_store.dart';
 
 
 class PosicaoFilaRepository{
   final _dio = Dio();
+  final _db = FirebaseFirestore.instance;
+  final NextPatientsStore nextPatientsStore = GetIt.I<NextPatientsStore>();
 
   Future<String> fetchPositionQueue(String doctor, String date, String codigoPaciente) async{
 
@@ -33,6 +38,12 @@ class PosicaoFilaRepository{
   }
 
   Future<void> updatePatientAnswered(String doctor, String date, int posicao) async{
+
+    String codigoPaciente = nextPatientsStore.idPatients[nextPatientsStore.namePatients[posicao-1]]['id'];
+
+    _db.collection('pacientes').doc(codigoPaciente).collection('consultas').doc(doctor+date).update({
+      'status': 'concluida'
+    });
 
     Map<String, dynamic> dataUpdatePatientAnswered = <String, dynamic>{};
 

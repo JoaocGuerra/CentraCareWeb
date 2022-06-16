@@ -1,7 +1,13 @@
+import 'package:centralcareweb/store/medico_page/next_patients/patient_on_appointment/patient_on_appointment_store.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import '../../../../store/medico_page/next_patients/next_patients_store.dart';
 
 class EndAppointmentButton extends StatelessWidget {
-  const EndAppointmentButton({Key? key}) : super(key: key);
+  final NextPatientsStore nextPatientsStore = GetIt.I<NextPatientsStore>();
+  final PatientOnAppointmentStore patientOnAppointmentStore = GetIt.I<PatientOnAppointmentStore>();
+
+  EndAppointmentButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,14 +15,21 @@ class EndAppointmentButton extends StatelessWidget {
       child: Container(
         height: 50,
         decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.5),
+            color: Colors.blue.withOpacity(0.5),
             borderRadius: BorderRadius.circular(12)),
         child: TextButton(
-          onPressed: () {},
+          onPressed: () async {
+            var txt = await patientOnAppointmentStore.htmlEditorController.getText();
+            if (txt.contains('src=\"data:')) {
+              txt =
+              '<text removed due to base-64 data, displaying the text could cause the app to crash>';
+            }
+            nextPatientsStore.fetchNextPatient(txt);
+          },
           child: const Center(
             child: Text(
               "Encerrar Atendimento",
-              style: TextStyle(color: Colors.black, fontSize: 15),
+              style: TextStyle(color: Colors.white, fontSize: 15),
             ),
           ),
         ),

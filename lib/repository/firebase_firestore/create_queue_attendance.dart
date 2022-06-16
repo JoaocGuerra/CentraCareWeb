@@ -10,10 +10,17 @@ class CreateQueueAttendanceRepository{
 
   Future<void> createQueue(String doctor, String date)async {
 
+    for(int i=0;i<nextPatientsStore.namePatients.length;i++){
+      _db.collection('pacientes')
+          .doc(nextPatientsStore.idPatients[nextPatientsStore.namePatients[i]]['id'])
+          .collection('consultas')
+          .doc(doctor+date).update({'status':'atendimento'});
+    }
+
     await _db.collection('fila')
         .doc(doctor+date)
         .set({'concluido':false,'paciente':0});
-
+    
     nextPatientsStore.setAttendanceStart(true);
 
   }

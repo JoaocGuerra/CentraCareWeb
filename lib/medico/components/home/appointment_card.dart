@@ -1,5 +1,6 @@
 import 'package:centralcareweb/repository/firebase_firestore/create_queue_attendance.dart';
 import 'package:centralcareweb/store/auth/auth_store.dart';
+import 'package:centralcareweb/store/medico_page/next_patients/patient_on_appointment/patient_on_appointment_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/new_date_doctor/details_date_doctor/details_date_doctor_store.dart';
 import 'package:centralcareweb/utils/utils_datetime.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';

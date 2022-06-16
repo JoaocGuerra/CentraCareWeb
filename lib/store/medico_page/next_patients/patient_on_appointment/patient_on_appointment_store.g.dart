@@ -25,85 +25,58 @@ mixin _$PatientOnAppointmentStore on _PatientOnAppointmentStore, Store {
     });
   }
 
-  late final _$namePatientsAtom =
-      Atom(name: '_PatientOnAppointmentStore.namePatients', context: context);
-
-  @override
-  List<dynamic> get namePatients {
-    _$namePatientsAtom.reportRead();
-    return super.namePatients;
-  }
-
-  @override
-  set namePatients(List<dynamic> value) {
-    _$namePatientsAtom.reportWrite(value, super.namePatients, () {
-      super.namePatients = value;
-    });
-  }
-
-  late final _$idPatientsAtom =
-      Atom(name: '_PatientOnAppointmentStore.idPatients', context: context);
-
-  @override
-  Map<String, dynamic> get idPatients {
-    _$idPatientsAtom.reportRead();
-    return super.idPatients;
-  }
-
-  @override
-  set idPatients(Map<String, dynamic> value) {
-    _$idPatientsAtom.reportWrite(value, super.idPatients, () {
-      super.idPatients = value;
-    });
-  }
-
-  late final _$attendanceStartAtom = Atom(
-      name: '_PatientOnAppointmentStore.attendanceStart', context: context);
-
-  @override
-  bool get attendanceStart {
-    _$attendanceStartAtom.reportRead();
-    return super.attendanceStart;
-  }
-
-  @override
-  set attendanceStart(bool value) {
-    _$attendanceStartAtom.reportWrite(value, super.attendanceStart, () {
-      super.attendanceStart = value;
-    });
-  }
-
-  late final _$fetchPatientsTodayAsyncAction = AsyncAction(
-      '_PatientOnAppointmentStore.fetchPatientsToday',
+  late final _$patientOnAppointmentAtom = Atom(
+      name: '_PatientOnAppointmentStore.patientOnAppointment',
       context: context);
 
   @override
-  Future<void> fetchPatientsToday() {
-    return _$fetchPatientsTodayAsyncAction
-        .run(() => super.fetchPatientsToday());
+  PatientOnAppointmentModel? get patientOnAppointment {
+    _$patientOnAppointmentAtom.reportRead();
+    return super.patientOnAppointment;
   }
 
-  late final _$_PatientOnAppointmentStoreActionController =
-      ActionController(name: '_PatientOnAppointmentStore', context: context);
+  @override
+  set patientOnAppointment(PatientOnAppointmentModel? value) {
+    _$patientOnAppointmentAtom.reportWrite(value, super.patientOnAppointment,
+        () {
+      super.patientOnAppointment = value;
+    });
+  }
+
+  late final _$htmlEditorControllerAtom = Atom(
+      name: '_PatientOnAppointmentStore.htmlEditorController',
+      context: context);
 
   @override
-  dynamic setAttendanceStart(bool value) {
-    final _$actionInfo = _$_PatientOnAppointmentStoreActionController
-        .startAction(name: '_PatientOnAppointmentStore.setAttendanceStart');
-    try {
-      return super.setAttendanceStart(value);
-    } finally {
-      _$_PatientOnAppointmentStoreActionController.endAction(_$actionInfo);
-    }
+  HtmlEditorController get htmlEditorController {
+    _$htmlEditorControllerAtom.reportRead();
+    return super.htmlEditorController;
+  }
+
+  @override
+  set htmlEditorController(HtmlEditorController value) {
+    _$htmlEditorControllerAtom.reportWrite(value, super.htmlEditorController,
+        () {
+      super.htmlEditorController = value;
+    });
+  }
+
+  late final _$fetchPatientOnAppointmentAsyncAction = AsyncAction(
+      '_PatientOnAppointmentStore.fetchPatientOnAppointment',
+      context: context);
+
+  @override
+  Future<void> fetchPatientOnAppointment() {
+    return _$fetchPatientOnAppointmentAsyncAction
+        .run(() => super.fetchPatientOnAppointment());
   }
 
   @override
   String toString() {
     return '''
 loading: ${loading},
-namePatients: ${namePatients},
-idPatients: ${idPatients},
-attendanceStart: ${attendanceStart}
+patientOnAppointment: ${patientOnAppointment},
+htmlEditorController: ${htmlEditorController}
     ''';
   }
 }

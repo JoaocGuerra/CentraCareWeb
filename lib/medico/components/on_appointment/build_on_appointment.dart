@@ -31,7 +31,10 @@ class BuildOnAppointmentCard extends StatelessWidget {
             const SizedBox(
               height: kSpacing ,
             ),
-            BodyBuildOnAppointment()
+            BodyBuildOnAppointment(),
+            const SizedBox(
+              height: kSpacing ,
+            ),
           ],
         ),
       ),

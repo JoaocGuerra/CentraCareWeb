@@ -36,7 +36,7 @@ class BuildNextPatients extends StatelessWidget {
                   const SizedBox(
                     height: kSpacing,
                   ),
-                  nextPatientsStore.loading ?
+                  nextPatientsStore.loadingBuildNextPatients ?
                   const Center(
                     child: CircularProgressIndicator(),
                   )

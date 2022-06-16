@@ -20,3 +20,4 @@ const String pathAvailableTimes = "/horarios-disponiveis-medico";
 const String pathReadPositionQueueAppointment = "/atendimento/read";
 const String pathInsertAppointment = "/atendimento/inserir";
 const String pathUpdatePatientAnswered = "/atendimento/update/paciente-atendido";
+const String pathGeneratePDF = "/gerar-pdf";

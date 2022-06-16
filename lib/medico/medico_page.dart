@@ -1,6 +1,7 @@
 import 'package:centralcareweb/medico/components/next_patient/build_next_patients.dart';
 import 'package:centralcareweb/medico/components/on_appointment/build_on_appointment.dart';
 import 'package:centralcareweb/recepcionista/components/new_date_doctor/details_date_doctor/details_date_doctor.dart';
+import 'package:centralcareweb/store/medico_page/next_patients/patient_on_appointment/patient_on_appointment_store.dart';
 import 'package:centralcareweb/store/show_pages/show_home_store.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -8,13 +9,12 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
 import '../components/responsive_builder.dart';
-import '../store/medico_page/html_editor_store.dart';
 import '../store/medico_page/next_patients/next_patients_store.dart';
 import 'components/home/build_home.dart';
 import 'components/side_bar/build_side_bar_doctor.dart';
 
 class MedicoPage extends StatelessWidget {
-  final HtmlEditorStore htmlEditorStore =  GetIt.I<HtmlEditorStore>();
+  final PatientOnAppointmentStore patientOnAppointmentStore =  GetIt.I<PatientOnAppointmentStore>();
   final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
   final NextPatientsStore nextPatientsStore =  GetIt.I<NextPatientsStore>();
 
@@ -30,7 +30,7 @@ class MedicoPage extends StatelessWidget {
         return GestureDetector(
           onTap: (){
             if (!kIsWeb) {
-              htmlEditorStore.htmlEditorController.clearFocus();
+              patientOnAppointmentStore.htmlEditorController.clearFocus();
             }
           },
           child: Scaffold(

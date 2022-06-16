@@ -25,6 +25,23 @@ mixin _$NextPatientsStore on _NextPatientsStore, Store {
     });
   }
 
+  late final _$loadingBuildNextPatientsAtom = Atom(
+      name: '_NextPatientsStore.loadingBuildNextPatients', context: context);
+
+  @override
+  bool get loadingBuildNextPatients {
+    _$loadingBuildNextPatientsAtom.reportRead();
+    return super.loadingBuildNextPatients;
+  }
+
+  @override
+  set loadingBuildNextPatients(bool value) {
+    _$loadingBuildNextPatientsAtom
+        .reportWrite(value, super.loadingBuildNextPatients, () {
+      super.loadingBuildNextPatients = value;
+    });
+  }
+
   late final _$namePatientsAtom =
       Atom(name: '_NextPatientsStore.namePatients', context: context);
 
@@ -57,6 +74,22 @@ mixin _$NextPatientsStore on _NextPatientsStore, Store {
     });
   }
 
+  late final _$patientPositionAtom =
+      Atom(name: '_NextPatientsStore.patientPosition', context: context);
+
+  @override
+  int get patientPosition {
+    _$patientPositionAtom.reportRead();
+    return super.patientPosition;
+  }
+
+  @override
+  set patientPosition(int value) {
+    _$patientPositionAtom.reportWrite(value, super.patientPosition, () {
+      super.patientPosition = value;
+    });
+  }
+
   late final _$attendanceStartAtom =
       Atom(name: '_NextPatientsStore.attendanceStart', context: context);
 
@@ -70,6 +103,22 @@ mixin _$NextPatientsStore on _NextPatientsStore, Store {
   set attendanceStart(bool value) {
     _$attendanceStartAtom.reportWrite(value, super.attendanceStart, () {
       super.attendanceStart = value;
+    });
+  }
+
+  late final _$attendanceFinishAtom =
+      Atom(name: '_NextPatientsStore.attendanceFinish', context: context);
+
+  @override
+  bool get attendanceFinish {
+    _$attendanceFinishAtom.reportRead();
+    return super.attendanceFinish;
+  }
+
+  @override
+  set attendanceFinish(bool value) {
+    _$attendanceFinishAtom.reportWrite(value, super.attendanceFinish, () {
+      super.attendanceFinish = value;
     });
   }
 
@@ -91,6 +140,14 @@ mixin _$NextPatientsStore on _NextPatientsStore, Store {
         .run(() => super.fetchAttendanceStart());
   }
 
+  late final _$fetchNextPatientAsyncAction =
+      AsyncAction('_NextPatientsStore.fetchNextPatient', context: context);
+
+  @override
+  Future<void> fetchNextPatient(dynamic txt) {
+    return _$fetchNextPatientAsyncAction.run(() => super.fetchNextPatient(txt));
+  }
+
   late final _$_NextPatientsStoreActionController =
       ActionController(name: '_NextPatientsStore', context: context);
 
@@ -109,9 +166,12 @@ mixin _$NextPatientsStore on _NextPatientsStore, Store {
   String toString() {
     return '''
 loading: ${loading},
+loadingBuildNextPatients: ${loadingBuildNextPatients},
 namePatients: ${namePatients},
 idPatients: ${idPatients},
-attendanceStart: ${attendanceStart}
+patientPosition: ${patientPosition},
+attendanceStart: ${attendanceStart},
+attendanceFinish: ${attendanceFinish}
     ''';
   }
 }
