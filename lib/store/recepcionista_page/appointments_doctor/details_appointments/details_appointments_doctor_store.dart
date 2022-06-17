@@ -7,7 +7,7 @@ import 'package:mobx/mobx.dart';
 
 import '../../../../model/appointment_model.dart';
 import '../../../../repository/api/desmarcar_consulta_repository.dart';
-import '../../../show_pages/show_home_store.dart';
+import '../../../show_pages/show_store.dart';
 
 part 'details_appointments_doctor_store.g.dart';
 
@@ -41,7 +41,7 @@ abstract class _DetailsAppointmentsDoctorStore with Store {
   String codigoMedico = "";
   String diaMesAno = "";
 
-  final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
+  final ShowStore showHomeStore =  GetIt.I<ShowStore>();
 
   @action
   void setSelectedHour(String hour){

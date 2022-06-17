@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../../../store/show_pages/show_home_store.dart';
+import '../../../../../store/show_pages/show_store.dart';
 
 class ButtonNewDateDoctorSideBar extends StatelessWidget {
-  final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
+  final ShowStore showHomeStore =  GetIt.I<ShowStore>();
 
   ButtonNewDateDoctorSideBar({Key? key}) : super(key: key);
 

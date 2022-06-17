@@ -20,14 +20,12 @@ class TextInformationsPatient extends StatelessWidget {
                 color: Colors.blue[100],
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                    image: NetworkImage(patientOnAppointmentStore.patientOnAppointment?.foto ?? ""),
+                    image: NetworkImage(patientOnAppointmentStore.patientOnAppointment?.foto ?? imageTransparent),
                 )
             ),
           ),
           const SizedBox(height: kSpacing,),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+          Wrap(
             children:[
               const Text(
                 "Nome: ",
@@ -37,7 +35,7 @@ class TextInformationsPatient extends StatelessWidget {
                 ),
               ),
               Text(
-                patientOnAppointmentStore.patientOnAppointment?.nomeCompleto ?? "",
+                patientOnAppointmentStore.patientOnAppointment?.nomeCompleto ?? "loading...",
                 style: const TextStyle(
                   fontSize: 16,
                 ),
@@ -52,7 +50,7 @@ class TextInformationsPatient extends StatelessWidget {
                 ),
               ),
               Text(
-                patientOnAppointmentStore.patientOnAppointment?.sexo ?? "",
+                patientOnAppointmentStore.patientOnAppointment?.sexo ?? "loading...",
                 style: const TextStyle(
                   fontSize: 16,
                 ),
@@ -67,7 +65,7 @@ class TextInformationsPatient extends StatelessWidget {
                 ),
               ),
               Text(
-                patientOnAppointmentStore.patientOnAppointment?.idade.toString() ?? "",
+                patientOnAppointmentStore.patientOnAppointment?.idade.toString() ?? "loading...",
                 style: const TextStyle(
                   fontSize: 16,
                 ),

@@ -2,7 +2,7 @@ import 'package:centralcareweb/medico/components/next_patient/build_next_patient
 import 'package:centralcareweb/medico/components/on_appointment/build_on_appointment.dart';
 import 'package:centralcareweb/recepcionista/components/new_date_doctor/details_date_doctor/details_date_doctor.dart';
 import 'package:centralcareweb/store/medico_page/next_patients/patient_on_appointment/patient_on_appointment_store.dart';
-import 'package:centralcareweb/store/show_pages/show_home_store.dart';
+import 'package:centralcareweb/store/show_pages/show_store.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -15,7 +15,7 @@ import 'components/side_bar/build_side_bar_doctor.dart';
 
 class MedicoPage extends StatelessWidget {
   final PatientOnAppointmentStore patientOnAppointmentStore =  GetIt.I<PatientOnAppointmentStore>();
-  final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
+  final ShowStore showHomeStore =  GetIt.I<ShowStore>();
   final NextPatientsStore nextPatientsStore =  GetIt.I<NextPatientsStore>();
 
   MedicoPage({Key? key}) : super(key: key);

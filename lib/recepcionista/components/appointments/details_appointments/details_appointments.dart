@@ -1,5 +1,5 @@
 import 'package:centralcareweb/recepcionista/components/appointments/details_appointments/form_details/form_details.dart';
-import 'package:centralcareweb/store/show_pages/show_home_store.dart';
+import 'package:centralcareweb/store/show_pages/show_store.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -12,7 +12,7 @@ import '../../../../store/recepcionista_page/appointments_doctor/details_appoint
 
 class DetailsAppointments extends StatelessWidget {
   final DetailsAppointmentsDoctorStore detailsAppointmentsDoctorStore =  GetIt.I<DetailsAppointmentsDoctorStore>();
-  final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
+  final ShowStore showHomeStore =  GetIt.I<ShowStore>();
   DetailsAppointments({Key? key}) : super(key: key);
 
   @override

@@ -10,10 +10,10 @@ import 'package:get_it/get_it.dart';
 
 import '../../../repository/api/posicao_fila_repository.dart';
 import '../../../store/medico_page/next_patients/next_patients_store.dart';
-import '../../../store/show_pages/show_home_store.dart';
+import '../../../store/show_pages/show_store.dart';
 
 class AppointmentCard extends StatelessWidget {
-  final ShowHomeStore showHomeStore = GetIt.I<ShowHomeStore>();
+  final ShowStore showHomeStore = GetIt.I<ShowStore>();
   final DetailsDateDoctorStore detailsDateDoctorStore = GetIt.I<DetailsDateDoctorStore>();
   final NextPatientsStore nextPatientsStore = GetIt.I<NextPatientsStore>();
   final AuthStore authStore = GetIt.I<AuthStore>();

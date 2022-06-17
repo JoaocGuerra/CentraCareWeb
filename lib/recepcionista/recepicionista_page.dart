@@ -9,7 +9,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
 import '../store/recepcionista_page/appointments_doctor/appointments_doctor_store.dart';
-import '../store/show_pages/show_home_store.dart';
+import '../store/show_pages/show_store.dart';
 import 'components/appointments/details_appointments/details_appointments.dart';
 import 'components/new_appointments/buildNewAppointment.dart';
 import 'components/new_date_doctor/new_date_doctor.dart';
@@ -24,7 +24,7 @@ class RecepicionistaPage extends StatefulWidget {
 
 class _RecepicionistaPageState extends State<RecepicionistaPage> {
   final AppointmentsDoctorStore appointmentsDoctorStore =  GetIt.I<AppointmentsDoctorStore>();
-  final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
+  final ShowStore showHomeStore =  GetIt.I<ShowStore>();
   @override
   Widget build(BuildContext context) {
     appointmentsDoctorStore.fetchAppointmentsDoctors();

@@ -8,12 +8,12 @@ import 'package:get_it/get_it.dart';
 
 import '../../../constans/app_constants.dart';
 import 'buttons/end_appointment_button.dart';
+import 'buttons/historic_patient_button.dart';
 import 'editor/html_editor.dart';
 
 class BodyBuildOnAppointment extends StatelessWidget {
   final PatientOnAppointmentStore patientOnAppointmentStore = GetIt.I<PatientOnAppointmentStore>();
   final NextPatientsStore nextPatientsStore = GetIt.I<NextPatientsStore>();
-
 
   BodyBuildOnAppointment({Key? key}) : super(key: key);
 
@@ -40,6 +40,10 @@ class BodyBuildOnAppointment extends StatelessWidget {
       Column(
         children: [
           TextInformationsPatient(),
+          const SizedBox(
+            height: 10,
+          ),
+          HistoricPatientButton(),
           const SizedBox(
             height: 40,
           ),

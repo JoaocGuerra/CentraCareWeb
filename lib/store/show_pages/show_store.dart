@@ -1,10 +1,14 @@
 import 'package:mobx/mobx.dart';
 
-part 'show_home_store.g.dart';
+part 'show_store.g.dart';
 
-class ShowHomeStore = _ShowHomeStore with _$ShowHomeStore;
+class ShowStore = _ShowStore with _$ShowStore;
 
-abstract class _ShowHomeStore with Store {
+abstract class _ShowStore with Store {
+
+  @observable
+  int showInEmployeesRegister = 1;
+  //1 = EmployeesList, 2 = EditEmployee
 
   @observable
   int showInHomeReceptionist = 1;
@@ -14,6 +18,11 @@ abstract class _ShowHomeStore with Store {
   @observable
   int showInHomeDoctor = 1;
   //1 = BuildHome, 2 = BuildOnAppointmentCard, 3 = DetailsAppointmentDoctor
+
+  @action
+  void setShowInEmployeesRegister(int option){
+    showInEmployeesRegister = option;
+  }
 
   @action
   void setShowInHomeReceptionist(int option){

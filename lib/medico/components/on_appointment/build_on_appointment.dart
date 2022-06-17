@@ -14,6 +14,7 @@ class BuildOnAppointmentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      controller: ScrollController(initialScrollOffset: 0),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: kSpacing),
         child: Column(

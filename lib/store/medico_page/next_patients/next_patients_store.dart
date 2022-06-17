@@ -82,7 +82,6 @@ abstract class _NextPatientsStore with Store {
             namePatients.sort();
             loadingBuildNextPatients = false;
           }
-
     });
 
   }
@@ -92,15 +91,17 @@ abstract class _NextPatientsStore with Store {
 
     final String? codigoMedico = authStore.user?.uid;
 
-    _db.collection('fila')
-        .doc(codigoMedico!+diaMesAno)
-        .get().then((snapshot){
+    if(codigoMedico!=null){
+      _db.collection('fila')
+          .doc(codigoMedico+diaMesAno)
+          .get().then((snapshot){
 
-          if(snapshot.exists){
-            setAttendanceStart(true);
-          }
+        if(snapshot.exists){
+          setAttendanceStart(true);
+        }
 
-    });
+      });
+    }
 
   }
 

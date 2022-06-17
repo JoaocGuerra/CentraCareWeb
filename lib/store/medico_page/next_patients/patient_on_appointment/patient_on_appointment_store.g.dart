@@ -61,6 +61,22 @@ mixin _$PatientOnAppointmentStore on _PatientOnAppointmentStore, Store {
     });
   }
 
+  late final _$listHistoricAtom =
+      Atom(name: '_PatientOnAppointmentStore.listHistoric', context: context);
+
+  @override
+  List<HistoricModel> get listHistoric {
+    _$listHistoricAtom.reportRead();
+    return super.listHistoric;
+  }
+
+  @override
+  set listHistoric(List<HistoricModel> value) {
+    _$listHistoricAtom.reportWrite(value, super.listHistoric, () {
+      super.listHistoric = value;
+    });
+  }
+
   late final _$fetchPatientOnAppointmentAsyncAction = AsyncAction(
       '_PatientOnAppointmentStore.fetchPatientOnAppointment',
       context: context);
@@ -71,12 +87,23 @@ mixin _$PatientOnAppointmentStore on _PatientOnAppointmentStore, Store {
         .run(() => super.fetchPatientOnAppointment());
   }
 
+  late final _$fetchHistoricPatientAsyncAction = AsyncAction(
+      '_PatientOnAppointmentStore.fetchHistoricPatient',
+      context: context);
+
+  @override
+  Future<void> fetchHistoricPatient() {
+    return _$fetchHistoricPatientAsyncAction
+        .run(() => super.fetchHistoricPatient());
+  }
+
   @override
   String toString() {
     return '''
 loading: ${loading},
 patientOnAppointment: ${patientOnAppointment},
-htmlEditorController: ${htmlEditorController}
+htmlEditorController: ${htmlEditorController},
+listHistoric: ${listHistoric}
     ''';
   }
 }

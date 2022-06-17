@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:typed_data';
+
 import 'package:centralcareweb/store/api/horas_disponiveis_store.dart';
 import 'package:centralcareweb/store/api/posicao_fila_store.dart';
 import 'package:centralcareweb/store/auth/auth_store.dart';
@@ -17,20 +20,13 @@ import 'package:centralcareweb/store/recepcionista_page/new_date_doctor/details_
 import 'package:centralcareweb/store/recepcionista_page/new_date_doctor/doctor_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/new_date_doctor/new_date_doctor_store.dart';
 import 'package:centralcareweb/store/recepcionista_page/register_patient/register_patient_store.dart';
-import 'package:centralcareweb/store/show_pages/show_home_store.dart';
+import 'package:centralcareweb/store/show_pages/show_store.dart';
 import 'package:centralcareweb/store/signIn/sign_in_page_store.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import 'auth/auth.dart';
-
-
-import 'package:html/parser.dart' show parse;
-import 'package:pdf/widgets.dart' as pw;
-import 'dart:typed_data';
-import 'dart:html' as html;
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +36,7 @@ void main() async {
 }
 
 void setupLocators() {
-  GetIt.I.registerSingleton(ShowHomeStore());
+  GetIt.I.registerSingleton(ShowStore());
 
   GetIt.I.registerSingleton(RegisterTabStore());
   GetIt.I.registerSingleton(SignInPageStore());

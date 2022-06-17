@@ -6,12 +6,12 @@ import 'package:get_it/get_it.dart';
 
 import '../../../../components/header_text.dart';
 import '../../../../constans/app_constants.dart';
-import '../../../../store/show_pages/show_home_store.dart';
+import '../../../../store/show_pages/show_store.dart';
 import 'components/body_details_date_doctor.dart';
 
 
 class DetailsDateDoctor extends StatelessWidget {
-  final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
+  final ShowStore showHomeStore =  GetIt.I<ShowStore>();
   final DetailsDateDoctorStore detailsDateDoctorStore =  GetIt.I<DetailsDateDoctorStore>();
   final bool recepcionista;
 

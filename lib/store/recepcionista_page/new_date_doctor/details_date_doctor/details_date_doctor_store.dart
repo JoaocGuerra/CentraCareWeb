@@ -1,6 +1,6 @@
 import 'package:centralcareweb/repository/api/update_queue_repository.dart';
 import 'package:centralcareweb/store/recepcionista_page/appointments_doctor/appointments_doctor_store.dart';
-import 'package:centralcareweb/store/show_pages/show_home_store.dart';
+import 'package:centralcareweb/store/show_pages/show_store.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
@@ -29,7 +29,7 @@ abstract class _DetailsDateDoctorStore with Store {
   String codigoMedico = "";
   String diaMesAno = "";
 
-  final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
+  final ShowStore showHomeStore =  GetIt.I<ShowStore>();
 
 
   @action

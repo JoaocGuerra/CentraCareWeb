@@ -1,4 +1,4 @@
-import 'package:centralcareweb/store/show_pages/show_home_store.dart';
+import 'package:centralcareweb/store/show_pages/show_store.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ abstract class _AppointmentsDoctorStore with Store {
 
   final DetailsAppointmentsDoctorStore detailsAppointmentsDoctorStore =  GetIt.I<DetailsAppointmentsDoctorStore>();
   final DetailsDateDoctorStore detailsDateDoctorStore =  GetIt.I<DetailsDateDoctorStore>();
-  final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
+  final ShowStore showHomeStore =  GetIt.I<ShowStore>();
 
   @observable
   bool loading = false;

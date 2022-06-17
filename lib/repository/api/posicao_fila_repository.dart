@@ -39,11 +39,13 @@ class PosicaoFilaRepository{
 
   Future<void> updatePatientAnswered(String doctor, String date, int posicao) async{
 
-    String codigoPaciente = nextPatientsStore.idPatients[nextPatientsStore.namePatients[posicao-1]]['id'];
+    if(posicao>0){
+      String codigoPaciente = nextPatientsStore.idPatients[nextPatientsStore.namePatients[posicao-1]]['id'];
 
-    _db.collection('pacientes').doc(codigoPaciente).collection('consultas').doc(doctor+date).update({
-      'status': 'concluida'
-    });
+      _db.collection('pacientes').doc(codigoPaciente).collection('consultas').doc(doctor+date).update({
+        'status': 'concluida'
+      });
+    }
 
     Map<String, dynamic> dataUpdatePatientAnswered = <String, dynamic>{};
 
