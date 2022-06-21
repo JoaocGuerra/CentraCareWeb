@@ -25,6 +25,22 @@ mixin _$PatientOnAppointmentStore on _PatientOnAppointmentStore, Store {
     });
   }
 
+  late final _$appointmentInitialAtom = Atom(
+      name: '_PatientOnAppointmentStore.appointmentInitial', context: context);
+
+  @override
+  bool get appointmentInitial {
+    _$appointmentInitialAtom.reportRead();
+    return super.appointmentInitial;
+  }
+
+  @override
+  set appointmentInitial(bool value) {
+    _$appointmentInitialAtom.reportWrite(value, super.appointmentInitial, () {
+      super.appointmentInitial = value;
+    });
+  }
+
   late final _$patientOnAppointmentAtom = Atom(
       name: '_PatientOnAppointmentStore.patientOnAppointment',
       context: context);
@@ -97,10 +113,25 @@ mixin _$PatientOnAppointmentStore on _PatientOnAppointmentStore, Store {
         .run(() => super.fetchHistoricPatient());
   }
 
+  late final _$_PatientOnAppointmentStoreActionController =
+      ActionController(name: '_PatientOnAppointmentStore', context: context);
+
+  @override
+  dynamic setAppointmentInitial(bool value) {
+    final _$actionInfo = _$_PatientOnAppointmentStoreActionController
+        .startAction(name: '_PatientOnAppointmentStore.setAppointmentInitial');
+    try {
+      return super.setAppointmentInitial(value);
+    } finally {
+      _$_PatientOnAppointmentStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 loading: ${loading},
+appointmentInitial: ${appointmentInitial},
 patientOnAppointment: ${patientOnAppointment},
 htmlEditorController: ${htmlEditorController},
 listHistoric: ${listHistoric}

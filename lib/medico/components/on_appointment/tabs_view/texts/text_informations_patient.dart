@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../../store/medico_page/next_patients/patient_on_appointment/patient_on_appointment_store.dart';
+import '../../../../../store/medico_page/next_patients/patient_on_appointment/patient_on_appointment_store.dart';
+
 
 class TextInformationsPatient extends StatelessWidget {
   final PatientOnAppointmentStore patientOnAppointmentStore = GetIt.I<PatientOnAppointmentStore>();

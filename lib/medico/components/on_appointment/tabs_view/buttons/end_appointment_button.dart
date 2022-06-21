@@ -1,7 +1,9 @@
 import 'package:centralcareweb/store/medico_page/next_patients/patient_on_appointment/patient_on_appointment_store.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import '../../../../store/medico_page/next_patients/next_patients_store.dart';
+
+import '../../../../../store/medico_page/next_patients/next_patients_store.dart';
+
 
 class EndAppointmentButton extends StatelessWidget {
   final NextPatientsStore nextPatientsStore = GetIt.I<NextPatientsStore>();
@@ -25,6 +27,7 @@ class EndAppointmentButton extends StatelessWidget {
               '<text removed due to base-64 data, displaying the text could cause the app to crash>';
             }
             nextPatientsStore.fetchNextPatient(txt);
+            patientOnAppointmentStore.setAppointmentInitial(false);
           },
           child: const Center(
             child: Text(

@@ -1,7 +1,9 @@
 import 'package:centralcareweb/model/historic_model.dart';
+import 'package:centralcareweb/model/prontuario_model.dart';
 import 'package:centralcareweb/store/auth/auth_store.dart';
 import 'package:centralcareweb/utils/utils_datetime.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 import 'package:html_editor_enhanced/html_editor.dart';
 import 'package:mobx/mobx.dart';
@@ -22,13 +24,27 @@ abstract class _PatientOnAppointmentStore with Store {
   @observable
   bool loading = false;
 
+  @observable
+  bool appointmentInitial = false;
+  @action
+  setAppointmentInitial(bool value){
+    appointmentInitial = value;
+  }
+
   String diaMesAno = UtilsDateTime.getDatetimeNow();
 
   @observable
   PatientOnAppointmentModel? patientOnAppointment;
 
-  @observable
   HtmlEditorController htmlEditorController = HtmlEditorController();
+  TextEditingController queixaPrincipalController = TextEditingController();
+  TextEditingController historiaDoencaAtualController = TextEditingController();
+  TextEditingController revisaoSitemasController = TextEditingController();
+  TextEditingController historiaMedicaPregressaController = TextEditingController();
+  TextEditingController historiaFamiliarController = TextEditingController();
+  TextEditingController perfilPsicossoialController = TextEditingController();
+  TextEditingController sinaisVitaisController = TextEditingController();
+  TextEditingController avaliacoesController = TextEditingController();
 
   @observable
   List<HistoricModel> listHistoric = [];
@@ -90,13 +106,35 @@ abstract class _PatientOnAppointmentStore with Store {
               HistoricModel(
                   snapshot.docs[i]['nome_medico'],
                   UtilsDateTime.convertFormatDate(snapshot.docs[i]['dia_mes_ano']),
-                  snapshot.docs[i]['especialidade'],
-                  receita
+                  snapshot.docs[i]['especialidade_medico'],
+                  receita,
+                  ProntruarioModel(
+                    snapshot.docs[i]['queixa_principal'],
+                    snapshot.docs[i]['historia_da_doenca_atual'],
+                    snapshot.docs[i]['revisao_de_sistemas'],
+                    snapshot.docs[i]['historia_medica_pregressa'],
+                    snapshot.docs[i]['historia_familiar'],
+                    snapshot.docs[i]['perfil_psicossocial'],
+                    snapshot.docs[i]['sinais_vitais'],
+                    snapshot.docs[i]['avaliacoes'],
+                  )
               )
           );
         }
       }
     });
+  }
+
+  @action
+  void clearAllFields(){
+    queixaPrincipalController.text = "";
+    historiaDoencaAtualController.text = "";
+    revisaoSitemasController.text = "";
+    historiaMedicaPregressaController.text = "";
+    historiaFamiliarController.text = "";
+    perfilPsicossoialController.text = "";
+    sinaisVitaisController.text = "";
+    avaliacoesController.text = "";
   }
 
 }

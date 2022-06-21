@@ -4,7 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../repository/api/posicao_fila_repository.dart';
-import '../../../repository/api/salvar_pdf_repository.dart';
+import '../../../repository/api/salvar_informacoes_consulta_repository.dart';
 import '../../../utils/utils_datetime.dart';
 import '../../api/posicao_fila_store.dart';
 import '../../auth/auth_store.dart';
@@ -111,7 +111,7 @@ abstract class _NextPatientsStore with Store {
     try{
       loading = true;
       await PosicaoFilaRepository().updatePatientAnswered(authStore.user?.uid ?? "", diaMesAno, patientPosition);
-      await SalvarPDFRepository().savePDF(authStore.user?.uid ?? "", diaMesAno, patientPosition,txt);
+      await SalvarInformacoesConsultaRepository().save(authStore.user?.uid ?? "", diaMesAno, patientPosition,txt);
       loading = false;
     }catch(e){
       loading = false;
