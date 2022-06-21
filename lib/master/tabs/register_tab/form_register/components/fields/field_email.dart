@@ -5,18 +5,18 @@ import '../../../../../../components/custom_textformfield.dart';
 import '../../../../../../store/master_page/tabs/register_tab/register_tab_store.dart';
 import '../../../../../../store/recepcionista_page/register_patient/register_patient_store.dart';
 
-class FormFieldEmail extends StatelessWidget {
-  final RegisterPatientStore registerPatientStore =  GetIt.I<RegisterPatientStore>();
+class FormFieldEmailRegisterTab extends StatelessWidget {
+  final RegisterTabStore registerTabStore =  GetIt.I<RegisterTabStore>();
 
-  FormFieldEmail({Key? key}) : super(key: key);
+  FormFieldEmailRegisterTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: BoxConstraints(maxWidth: registerPatientStore.maxWidthBoxConstrains),
+      constraints: BoxConstraints(maxWidth: registerTabStore.maxWidthBoxConstrains),
       child: CustomTextFormField(
         list: const [],
-        textEditingController: registerPatientStore.emailController,
+        textEditingController: registerTabStore.emailController,
         isPasswordType: false,
         icon: Icons.mail,
         text: 'Email',

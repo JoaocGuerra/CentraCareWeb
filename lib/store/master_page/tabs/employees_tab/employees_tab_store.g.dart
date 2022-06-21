@@ -25,6 +25,22 @@ mixin _$EmployeesTabStore on _EmployeesTabStore, Store {
     });
   }
 
+  late final _$loadingDataEmployeeAtom =
+      Atom(name: '_EmployeesTabStore.loadingDataEmployee', context: context);
+
+  @override
+  bool get loadingDataEmployee {
+    _$loadingDataEmployeeAtom.reportRead();
+    return super.loadingDataEmployee;
+  }
+
+  @override
+  set loadingDataEmployee(bool value) {
+    _$loadingDataEmployeeAtom.reportWrite(value, super.loadingDataEmployee, () {
+      super.loadingDataEmployee = value;
+    });
+  }
+
   late final _$listEmployeesAtom =
       Atom(name: '_EmployeesTabStore.listEmployees', context: context);
 
@@ -45,6 +61,7 @@ mixin _$EmployeesTabStore on _EmployeesTabStore, Store {
   String toString() {
     return '''
 loading: ${loading},
+loadingDataEmployee: ${loadingDataEmployee},
 listEmployees: ${listEmployees}
     ''';
   }

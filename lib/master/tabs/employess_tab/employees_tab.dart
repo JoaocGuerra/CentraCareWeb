@@ -16,7 +16,7 @@ class EmployeesTab extends StatelessWidget {
     employeesTabStore.fetchEmployees();
     return Scaffold(
       body: Center(
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: SingleChildScrollView(
@@ -29,7 +29,7 @@ class EmployeesTab extends StatelessWidget {
                         :
                       Column(
                         children: [
-                          EmployeeText(),
+                          const EmployeeText(),
                           const SizedBox(height: 40,),
                           EmployeesList(listEmployees: employeesTabStore.listEmployees,)
                         ],

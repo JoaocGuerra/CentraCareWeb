@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../../../store/recepcionista_page/show_home_store.dart';
+import '../../../../../store/show_pages/show_store.dart';
 
 class ButtonNewAppointmentSideBar extends StatelessWidget {
-  final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
+  final ShowStore showHomeStore =  GetIt.I<ShowStore>();
 
   ButtonNewAppointmentSideBar({Key? key}) : super(key: key);
 
@@ -23,7 +23,7 @@ class ButtonNewAppointmentSideBar extends StatelessWidget {
           child: Center(
               child: TextButton(
                   onPressed: (){
-                    showHomeStore.setShowInHome(1);
+                    showHomeStore.setShowInHomeReceptionist(1);
                   },
                   child: Text("Nova Agendamento")
               )

@@ -12,6 +12,7 @@ class BaseboardSideBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const Divider(),
         Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child:  Container(

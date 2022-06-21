@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../../../../utils/utils_datetime.dart';
 import '../../../appointments/details_appointments/form_details/components/text/text_form_details.dart';
 import 'others/posicao_em_atendimento.dart';
 
@@ -52,7 +53,10 @@ class BodyDetailsDateDoctor extends StatelessWidget {
 
               TextPatientsDetailsDate(),
               const SizedBox(height: 20,),
-              ButtonDeselectDate()
+              Visibility(
+                visible: !(detailsDateDoctorStore.diaMesAno == UtilsDateTime.getDatetimeNow()),
+                child: ButtonDeselectDate()
+              )
             ],
           );
         }

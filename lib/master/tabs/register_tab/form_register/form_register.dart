@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../../../recepcionista/components/register_patient/form_patient/components/fields/field_name.dart';
 import '../../../../store/master_page/tabs/register_tab/register_tab_store.dart';
 import 'components/fields/field_birthday.dart';
 import 'components/fields/field_cpf.dart';
@@ -41,22 +42,22 @@ class FormRegister extends StatelessWidget {
                         TextForm(),
                         const SizedBox(height: 40,),
 
-                        FormFieldName(),
+                        FormFieldNameRegisterTab(),
                         const SizedBox(height: 10,),
 
-                        FormFielLastName(),
+                        FormFielLastNameRegisterTab(),
                         const SizedBox(height: 10,),
 
-                        FormFieldEmail(),
+                        FormFieldEmailRegisterTab(),
                         const SizedBox(height: 10,),
 
-                        FormFieldPassword(),
+                        FormFieldPasswordRegisterTab(),
                         const SizedBox(height: 10,),
 
-                        FormFieldCpf(),
+                        FormFieldCpfRegisterTab(),
                         const SizedBox(height: 10,),
 
-                        FormFieldBirthday(),
+                        FormFieldBirthdayRegisterTab(),
                         const SizedBox(height: 10,),
 
                         SelectGender(),
@@ -67,15 +68,15 @@ class FormRegister extends StatelessWidget {
 
                         Visibility(
                           visible: registerTabStore.function == Function.MEDICO.name,
-                          child: FormFieldSpecialty(),
+                          child: FormFieldSpecialtyRegisterTab(),
                         ),
                         const SizedBox(height: 10),
 
-                        ButtonRegister(),
+                        ButtonRegisterTab(),
                         const SizedBox(height: 5),
                         Visibility(
                           visible: registerTabStore.userRegister,
-                          child: const TextConfirm(),
+                          child: const TextConfirmRegisterTab(),
                         )
                       ],
                     ),

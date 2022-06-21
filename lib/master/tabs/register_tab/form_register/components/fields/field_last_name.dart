@@ -5,18 +5,18 @@ import 'package:get_it/get_it.dart';
 import '../../../../../../components/custom_textformfield.dart';
 import '../../../../../../store/master_page/tabs/register_tab/register_tab_store.dart';
 
-class FormFielLastName extends StatelessWidget {
-  final RegisterPatientStore registerPatientStore =  GetIt.I<RegisterPatientStore>();
+class FormFielLastNameRegisterTab extends StatelessWidget {
+  final RegisterTabStore registerTabStore =  GetIt.I<RegisterTabStore>();
 
-  FormFielLastName({Key? key}) : super(key: key);
+  FormFielLastNameRegisterTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: BoxConstraints(maxWidth: registerPatientStore.maxWidthBoxConstrains),
+      constraints: BoxConstraints(maxWidth: registerTabStore.maxWidthBoxConstrains),
       child: CustomTextFormField(
         list: const [],
-        textEditingController: registerPatientStore.lastNameController,
+        textEditingController: registerTabStore.lastNameController,
         isPasswordType: false,
         icon: Icons.person_pin_rounded,
         text: 'Sobrenome',

@@ -12,14 +12,34 @@ class InsertQueueRepository{
 
   final _dio = Dio();
   final _db = FirebaseFirestore.instance;
-  final _user = FirebaseAuth.instance.currentUser;
   final MarcarConsultaStore marcarConsultaStore = GetIt.I<MarcarConsultaStore>();
   final UsersStore usersStore = GetIt.I<UsersStore>();
 
   Future<void> insertQueue() async{
-      Map<String, dynamic> mapInsert = new Map<String, dynamic>();
 
-      String id = usersStore.idUsers[marcarConsultaStore.userController.text];
+    String id = usersStore.idUsers[marcarConsultaStore.userController.text];
+    List<dynamic> pacientes = [];
+    Map<String, dynamic> mapUpdate = Map<String, dynamic>();
+
+    _db.collection('funcionarios')
+        .doc(marcarConsultaStore.selectedDoctor)
+        .collection('atendimentos')
+        .doc(marcarConsultaStore.selectedDate)
+        .get().then((snapshot) async {
+
+      pacientes = await snapshot['pacientes'];
+
+      if(!pacientes.contains(id)) {
+        pacientes.add(id);
+      }
+
+      mapUpdate['pacientes'] = pacientes;
+
+      snapshot.reference.update(mapUpdate);
+
+    });
+
+      Map<String, dynamic> mapInsert = new Map<String, dynamic>();
 
       mapInsert["codigo_medico"] = marcarConsultaStore.selectedDoctor;
       mapInsert["nome_medico"] = marcarConsultaStore.nameDoctor;
@@ -30,24 +50,30 @@ class InsertQueueRepository{
       mapInsert["status"] = "marcada";
       mapInsert["termino"] = "-";
       mapInsert["receita"] = "";
-
-      print(mapInsert);
+      mapInsert["queixa_principal"] = "";
+      mapInsert["historia_da_doenca_atual"] = "";
+      mapInsert["revisao_de_sistemas"] = "";
+      mapInsert["historia_medica_pregressa"] = "";
+      mapInsert["historia_familiar"] = "";
+      mapInsert["perfil_psicossocial"] = "";
+      mapInsert["sinais_vitais"] = "";
+      mapInsert["avaliacoes"] = "";
 
       await _db.collection('pacientes')
           .doc(id)
           .collection('consultas').doc(marcarConsultaStore.selectedDoctor+marcarConsultaStore.selectedDate).set(mapInsert);
 
-      mapInsert = new Map<String, dynamic>();
+      Map<String, dynamic> mapInsertQueue = new Map<String, dynamic>();
       List<String> hoursSplit = marcarConsultaStore.selectedHour.split(":");
 
-      mapInsert["codigo_medico"] = marcarConsultaStore.selectedDoctor;
-      mapInsert["dia_mes_ano"] = marcarConsultaStore.selectedDate;
-      mapInsert["codigo_paciente"] = id;
-      mapInsert["hora"] = int.parse(hoursSplit[0]);
-      mapInsert["minuto"] = int.parse(hoursSplit[1]);
+      mapInsertQueue["codigo_medico"] = marcarConsultaStore.selectedDoctor;
+      mapInsertQueue["dia_mes_ano"] = marcarConsultaStore.selectedDate;
+      mapInsertQueue["codigo_paciente"] = id;
+      mapInsertQueue["hora"] = int.parse(hoursSplit[0]);
+      mapInsertQueue["minuto"] = int.parse(hoursSplit[1]);
 
       try{
-        await _dio.post(pathLocal + pathInsertQueue, data: mapInsert);
+        await _dio.post(pathLocal + pathInsertQueue, data: mapInsertQueue);
       }catch(e){
         print(e);
       }

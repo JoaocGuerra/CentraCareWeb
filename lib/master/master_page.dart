@@ -1,10 +1,12 @@
+import 'package:centralcareweb/master/tabs/employess_tab/edit_employees/edit_employees.dart';
 import 'package:centralcareweb/master/tabs/employess_tab/employees_tab.dart';
 import 'package:centralcareweb/master/tabs/register_tab/register_tab.dart';
-import 'package:centralcareweb/master/tabs/settings_tab.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
 import '../store/auth/auth_store.dart';
+import '../store/show_pages/show_store.dart';
 
 class MasterPage extends StatefulWidget {
   const MasterPage({Key? key}) : super(key: key);
@@ -15,13 +17,17 @@ class MasterPage extends StatefulWidget {
 
 class _MasterPageState extends State<MasterPage> {
   final AuthStore authStore =  GetIt.I<AuthStore>();
+  final ShowStore showStore =  GetIt.I<ShowStore>();
   int _selectedIndex = 0;
 
   Widget witchPage (int index){
     if(index == 0){
       return RegisterTab();
     }else if(index == 1){
-      return EmployeesTab();
+      return Observer(builder: (_){
+        return showStore.showInEmployeesRegister == 1 ? EmployeesTab() :
+               showStore.showInEmployeesRegister == 2 ? EditEmployees() : Center();
+      });
     }else{
       authStore.userSignOut();
       return const CircularProgressIndicator();

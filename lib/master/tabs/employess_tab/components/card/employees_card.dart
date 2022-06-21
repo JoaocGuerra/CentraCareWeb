@@ -1,9 +1,14 @@
+import 'package:centralcareweb/store/master_page/tabs/employees_tab/employees_tab_store.dart';
+import 'package:centralcareweb/store/show_pages/show_store.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 class EmployeesCard extends StatelessWidget {
+  final ShowStore showStore =  GetIt.I<ShowStore>();
+  final EmployeesTabStore employeesTabStore =  GetIt.I<EmployeesTabStore>();
   final dynamic data;
 
-  const EmployeesCard({Key? key, required this.data}) : super(key: key);
+  EmployeesCard({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,8 @@ class EmployeesCard extends StatelessWidget {
             children: [
               IconButton(
                   onPressed: (){
-
+                    employeesTabStore.fetchDataEmployee(data.id);
+                    showStore.setShowInEmployeesRegister(2);
                   },
                   icon: Icon(Icons.edit, color: Colors.white,)
               ),

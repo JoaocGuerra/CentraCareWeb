@@ -1,3 +1,4 @@
+import 'package:centralcareweb/repository/api/insert_appointment_repository.dart';
 import 'package:centralcareweb/repository/firebase_firestore/insert_employee_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -81,6 +82,7 @@ abstract class _NewDateDoctorStore with Store {
       loading = true;
       dateRegister = false;
       await InsertNewDateDoctorRepository().insertDate();
+      await InsertAppointmentRepository().insertDate();
       dateRegister = true;
       clearAllFields();
       loading = false;

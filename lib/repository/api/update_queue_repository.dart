@@ -25,7 +25,7 @@ class UpdateQueueRepository{
     try{
       await _dio.put(pathLocal+pathUpdateQueue, data: dataUpdateQueue);
     }catch(e){
-      return Future.error('Erros: HoursRepository');
+      return Future.error('Erros: UpdateQueueRepository');
     }
 
   }

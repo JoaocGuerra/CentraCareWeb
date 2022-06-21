@@ -9,6 +9,8 @@ abstract class _EmployeesTabStore with Store {
 
   @observable
   bool loading = false;
+  @observable
+  bool loadingDataEmployee = false;
 
   @observable
   List<dynamic> listEmployees = [];
@@ -32,7 +34,25 @@ abstract class _EmployeesTabStore with Store {
       print(e);
     }
 
+  }
 
+  Future<void> fetchDataEmployee(String codigoFuncionario) async {
+
+    try{
+      FirebaseFirestore.instance.collection('funcionarios').doc(codigoFuncionario).snapshots().listen((snapshot) {
+        loadingDataEmployee = true;
+        // int lengthEmployees = snapshot.docs.length;
+        // for(int i=0; i<lengthEmployees; i++){
+        //   if(snapshot.docs[i].get('funcao')!="admin"){
+        //     listEmployees = List.from(listEmployees..add(snapshot.docs[i]));
+        //   }
+        // }
+        loadingDataEmployee = false;
+      });
+    }catch(e){
+      loadingDataEmployee = false;
+      print(e);
+    }
 
   }
 

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_simple_treeview/flutter_simple_treeview.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mobx/mobx.dart';
 
 import '../../../components/header_text.dart';
 import '../../../constans/app_constants.dart';

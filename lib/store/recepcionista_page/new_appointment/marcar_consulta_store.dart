@@ -24,7 +24,6 @@ abstract class _MarcarConsultaStore with Store {
   @action
   void setSelectedDoctor(String value) {selectedDoctor = value;}
 
-
   @observable
   String nameDoctor = "";
   @action

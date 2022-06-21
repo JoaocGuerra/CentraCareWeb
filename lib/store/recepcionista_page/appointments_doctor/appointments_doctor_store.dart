@@ -1,4 +1,4 @@
-import 'package:centralcareweb/store/recepcionista_page/show_home_store.dart';
+import 'package:centralcareweb/store/show_pages/show_store.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ abstract class _AppointmentsDoctorStore with Store {
 
   final DetailsAppointmentsDoctorStore detailsAppointmentsDoctorStore =  GetIt.I<DetailsAppointmentsDoctorStore>();
   final DetailsDateDoctorStore detailsDateDoctorStore =  GetIt.I<DetailsDateDoctorStore>();
-  final ShowHomeStore showHomeStore =  GetIt.I<ShowHomeStore>();
+  final ShowStore showHomeStore =  GetIt.I<ShowStore>();
 
   @observable
   bool loading = false;
@@ -32,7 +32,7 @@ abstract class _AppointmentsDoctorStore with Store {
   @action
   Future<void> fetchAppointmentsDoctors() async {
 
-    await FirebaseFirestore.instance.collection('funcionarios').snapshots().listen((snapshot) async {
+    FirebaseFirestore.instance.collection('funcionarios').snapshots().listen((snapshot) async {
 
       loading = true;
       doctorNames = [];
@@ -42,10 +42,8 @@ abstract class _AppointmentsDoctorStore with Store {
         if(snapshot.docs[i].get('funcao') == "medico"){
           String name = snapshot.docs[i].get('nome') + " " + snapshot.docs[i].get('sobrenome')+" - "+snapshot.docs[i].get('especialidade');
           doctorNames.add(name);
-          snapshot.docs[i].reference.collection('atendimentos').snapshots().listen((snapshotAppointment) {
-
+          snapshot.docs[i].reference.collection('atendimentos').snapshots().listen((snapshotAppointment) async {
             loading = true;
-
             List<TreeNode> listTreeNodeDate = [];
             int lengthAppointments = snapshotAppointment.size;
 
@@ -58,26 +56,28 @@ abstract class _AppointmentsDoctorStore with Store {
 
                 for(int k=0; k<lengthPatients;k++){
                   if(patients[k]!=""){
-                    listTreeNodePatients.add(
-                        TreeNode(
-                            content: TextButton(
-                              child: Text(patients[k],overflow: TextOverflow.ellipsis,),
-                              onPressed: () {
-                                showHomeStore.setShowInHome(2);
-                                detailsAppointmentsDoctorStore.codigoPaciente = patients[k];
-                                detailsAppointmentsDoctorStore.codigoMedico =  snapshot.docs[i].id;
-                                detailsAppointmentsDoctorStore.diaMesAno = snapshotAppointment.docs[j].id;
-                              },
-                            )
-                        )
-                    );
+                    await FirebaseFirestore.instance.collection('pacientes').doc(patients[k]).get().then((snapshotPatient){
+                      listTreeNodePatients.add(
+                          TreeNode(
+                              content: TextButton(
+                                child: Text(snapshotPatient['nome'] + " " + snapshotPatient['sobrenome']),
+                                onPressed: () {
+                                  showHomeStore.setShowInHomeReceptionist(2);
+                                  detailsAppointmentsDoctorStore.codigoPaciente = patients[k];
+                                  detailsAppointmentsDoctorStore.codigoMedico =  snapshot.docs[i].id;
+                                  detailsAppointmentsDoctorStore.diaMesAno = snapshotAppointment.docs[j].id;
+                                },
+                              )
+                          )
+                      );
+                    });
                   }
                 }
                 listTreeNodeDate.add(
                     TreeNode(
                       content: TextButton(
                         onPressed: () {
-                          showHomeStore.setShowInHome(5);
+                          showHomeStore.setShowInHomeReceptionist(5);
                           detailsDateDoctorStore.codigoMedico = snapshot.docs[i].id;
                           detailsDateDoctorStore.diaMesAno = snapshotAppointment.docs[j].id;
                         },
@@ -89,8 +89,8 @@ abstract class _AppointmentsDoctorStore with Store {
               }
 
             }
-            loading = false;
             dataAppointments[name] = listTreeNodeDate;
+            loading = false;
           });
         }
       }
