@@ -1,16 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mobx/mobx.dart';
 
+import '../../../../model/master/employee_model.dart';
+
 part 'employees_tab_store.g.dart';
 
 class EmployeesTabStore = _EmployeesTabStore with _$EmployeesTabStore;
 
 abstract class _EmployeesTabStore with Store {
 
+  double maxWidthBoxConstrains = 400;
+
   @observable
   bool loading = false;
-  @observable
-  bool loadingDataEmployee = false;
 
   @observable
   List<dynamic> listEmployees = [];
@@ -31,26 +33,6 @@ abstract class _EmployeesTabStore with Store {
       });
     }catch(e){
       loading = false;
-      print(e);
-    }
-
-  }
-
-  Future<void> fetchDataEmployee(String codigoFuncionario) async {
-
-    try{
-      FirebaseFirestore.instance.collection('funcionarios').doc(codigoFuncionario).snapshots().listen((snapshot) {
-        loadingDataEmployee = true;
-        // int lengthEmployees = snapshot.docs.length;
-        // for(int i=0; i<lengthEmployees; i++){
-        //   if(snapshot.docs[i].get('funcao')!="admin"){
-        //     listEmployees = List.from(listEmployees..add(snapshot.docs[i]));
-        //   }
-        // }
-        loadingDataEmployee = false;
-      });
-    }catch(e){
-      loadingDataEmployee = false;
       print(e);
     }
 

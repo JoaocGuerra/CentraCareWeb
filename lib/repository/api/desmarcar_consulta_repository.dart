@@ -23,8 +23,7 @@ class DesmarcarConsultaRepository{
         .doc(codigoMedico)
         .collection('atendimentos')
         .doc(diaMesAno)
-        .snapshots().listen((snapshot) {
-
+        .get().then((snapshot) {
           List<dynamic> pacientes = snapshot['pacientes'];
           pacientes.remove(codigoPaciente);
 

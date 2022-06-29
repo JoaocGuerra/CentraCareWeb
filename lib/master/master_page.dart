@@ -22,7 +22,7 @@ class _MasterPageState extends State<MasterPage> {
 
   Widget witchPage (int index){
     if(index == 0){
-      return RegisterTab();
+      return const RegisterTab();
     }else if(index == 1){
       return Observer(builder: (_){
         return showStore.showInEmployeesRegister == 1 ? EmployeesTab() :

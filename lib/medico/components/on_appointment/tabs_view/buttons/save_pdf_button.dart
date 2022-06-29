@@ -5,11 +5,10 @@ import 'package:get_it/get_it.dart';
 import '../../../../../store/medico_page/next_patients/next_patients_store.dart';
 
 
-class EndAppointmentButton extends StatelessWidget {
-  final NextPatientsStore nextPatientsStore = GetIt.I<NextPatientsStore>();
+class SavePDFButton extends StatelessWidget {
   final PatientOnAppointmentStore patientOnAppointmentStore = GetIt.I<PatientOnAppointmentStore>();
 
-  EndAppointmentButton({Key? key}) : super(key: key);
+  SavePDFButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,7 @@ class EndAppointmentButton extends StatelessWidget {
       child: Container(
         height: 50,
         decoration: BoxDecoration(
-            color: Colors.blue.withOpacity(0.5),
+            color: Colors.green.withOpacity(0.5),
             borderRadius: BorderRadius.circular(12)),
         child: TextButton(
           onPressed: () async {
@@ -26,12 +25,11 @@ class EndAppointmentButton extends StatelessWidget {
               txt =
               '<text removed due to base-64 data, displaying the text could cause the app to crash>';
             }
-            nextPatientsStore.fetchNextPatient();
-            patientOnAppointmentStore.setAppointmentInitial(false);
+            patientOnAppointmentStore.savePDF(txt);
           },
           child: const Center(
             child: Text(
-              "Encerrar Atendimento",
+              "Salvar PDF",
               style: TextStyle(color: Colors.white, fontSize: 15),
             ),
           ),

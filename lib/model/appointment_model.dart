@@ -7,7 +7,6 @@ class AppointmentModel{
   late String nomeMedico, especialidadeMedico;
   late String inicioConsulta, terminoConsulta;
   late String status;
-  late String receita;
 
   AppointmentModel(
       this.nomeCompleto,
@@ -18,6 +17,5 @@ class AppointmentModel{
       this.especialidadeMedico,
       this.inicioConsulta,
       this.terminoConsulta,
-      this.status,
-      this.receita);
+      this.status);
 }

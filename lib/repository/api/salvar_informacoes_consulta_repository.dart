@@ -15,7 +15,7 @@ class SalvarInformacoesConsultaRepository{
   final _dio = Dio();
   final _db = FirebaseFirestore.instance;
 
-  Future<void> save(String doctor, String date, int posicao, var html) async {
+  Future<dynamic> savePDF(String doctor, String date, int posicao, var html) async {
 
     Map<String, dynamic> dataPDF = <String, dynamic>{};
 
@@ -25,6 +25,22 @@ class SalvarInformacoesConsultaRepository{
     dataPDF['dia_mes_ano'] = date;
     dataPDF['codigo_paciente'] = codigoPaciente;
     dataPDF['html'] = html;
+
+    try{
+      Response responsePDF =  await _dio.post(pathLocal+pathGeneratePDF, data: dataPDF);
+      await _db.collection('pacientes').doc(codigoPaciente).collection('consultas').doc(doctor+date).update({
+        'receita': responsePDF.toString()
+      });
+      patientOnAppointmentStore.receita = responsePDF.toString();
+    }catch(e){
+     print(e);
+    }
+
+  }
+
+  Future<void> save(String doctor, String date, int posicao) async {
+
+    String codigoPaciente = nextPatientsStore.idPatients[nextPatientsStore.namePatients[posicao-1]]['id'];
 
     ProntruarioModel prontuario =
     ProntruarioModel(
@@ -40,10 +56,8 @@ class SalvarInformacoesConsultaRepository{
     patientOnAppointmentStore.clearAllFields();
 
     try{
-      final response = await _dio.post(pathLocal+pathGeneratePDF, data: dataPDF);
       await _db.collection('pacientes').doc(codigoPaciente).collection('consultas').doc(doctor+date).update({
         'termino': UtilsDateTime.getHoursNow(),
-        'receita': await response.data,
         'queixa_principal': prontuario.queixaPrincipal,
         'historia_da_doenca_atual': prontuario.historiaDoencaAtual,
         'revisao_de_sistemas': prontuario.revisaoDeSistemas,

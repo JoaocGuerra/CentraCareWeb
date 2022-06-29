@@ -11,7 +11,7 @@ const kBorderRadius = 10.0;
 const kSpacing = 20.0;
 const maxWidthBoxConstrains = 600.0;
 
-const String pathLocal = "http://192.168.0.5:5000";
+const String pathLocal = "http://192.168.0.6:5000";
 const String pathInsertQueue = "/fila/inserir";
 const String pathUpdateQueue = "/fila/update";
 const String pathReadPositionQueue = "/fila/read";

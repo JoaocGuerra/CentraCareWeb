@@ -41,6 +41,22 @@ mixin _$PatientOnAppointmentStore on _PatientOnAppointmentStore, Store {
     });
   }
 
+  late final _$receitaAtom =
+      Atom(name: '_PatientOnAppointmentStore.receita', context: context);
+
+  @override
+  String get receita {
+    _$receitaAtom.reportRead();
+    return super.receita;
+  }
+
+  @override
+  set receita(String value) {
+    _$receitaAtom.reportWrite(value, super.receita, () {
+      super.receita = value;
+    });
+  }
+
   late final _$patientOnAppointmentAtom = Atom(
       name: '_PatientOnAppointmentStore.patientOnAppointment',
       context: context);
@@ -56,24 +72,6 @@ mixin _$PatientOnAppointmentStore on _PatientOnAppointmentStore, Store {
     _$patientOnAppointmentAtom.reportWrite(value, super.patientOnAppointment,
         () {
       super.patientOnAppointment = value;
-    });
-  }
-
-  late final _$htmlEditorControllerAtom = Atom(
-      name: '_PatientOnAppointmentStore.htmlEditorController',
-      context: context);
-
-  @override
-  HtmlEditorController get htmlEditorController {
-    _$htmlEditorControllerAtom.reportRead();
-    return super.htmlEditorController;
-  }
-
-  @override
-  set htmlEditorController(HtmlEditorController value) {
-    _$htmlEditorControllerAtom.reportWrite(value, super.htmlEditorController,
-        () {
-      super.htmlEditorController = value;
     });
   }
 
@@ -128,12 +126,23 @@ mixin _$PatientOnAppointmentStore on _PatientOnAppointmentStore, Store {
   }
 
   @override
+  void clearAllFields() {
+    final _$actionInfo = _$_PatientOnAppointmentStoreActionController
+        .startAction(name: '_PatientOnAppointmentStore.clearAllFields');
+    try {
+      return super.clearAllFields();
+    } finally {
+      _$_PatientOnAppointmentStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 loading: ${loading},
 appointmentInitial: ${appointmentInitial},
+receita: ${receita},
 patientOnAppointment: ${patientOnAppointment},
-htmlEditorController: ${htmlEditorController},
 listHistoric: ${listHistoric}
     ''';
   }

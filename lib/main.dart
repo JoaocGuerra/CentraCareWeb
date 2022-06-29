@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:centralcareweb/store/api/horas_disponiveis_store.dart';
 import 'package:centralcareweb/store/api/posicao_fila_store.dart';
 import 'package:centralcareweb/store/auth/auth_store.dart';
+import 'package:centralcareweb/store/master_page/tabs/employees_tab/edit_employees/edit_employees_store.dart';
 import 'package:centralcareweb/store/master_page/tabs/employees_tab/employees_tab_store.dart';
 import 'package:centralcareweb/store/master_page/tabs/register_tab/register_tab_store.dart';
 import 'package:centralcareweb/store/medico_page/next_patients/next_patients_store.dart';
@@ -42,6 +43,7 @@ void setupLocators() {
   GetIt.I.registerSingleton(SignInPageStore());
   GetIt.I.registerSingleton(AuthStore());
   GetIt.I.registerSingleton(EmployeesTabStore());
+  GetIt.I.registerSingleton(EditEmployeesStore());
 
   GetIt.I.registerSingleton(DetailsAppointmentsDoctorStore());
   GetIt.I.registerSingleton(DetailsDateDoctorStore());

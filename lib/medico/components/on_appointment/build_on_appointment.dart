@@ -60,7 +60,7 @@ class BuildOnAppointmentCard extends StatelessWidget {
               const InformacoesHistorico(),
               Anamnese(),
               ExameFisico(),
-              const Receita(),
+              Receita(),
             ],
           ),
         ),

@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:centralcareweb/utils/utils_string.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,19 +27,25 @@ class InsertEmployeeRepository{
     app.delete();
 
     Map<String, dynamic> mapInsert = new Map<String, dynamic>();
+    String genero = registerTabStore.gender.toLowerCase();
 
     mapInsert["nome"] = registerTabStore.nameController.text;
     mapInsert["sobrenome"] = registerTabStore.lastNameController.text;
     mapInsert["email"] = registerTabStore.emailController.text;
     mapInsert["cpf"] = registerTabStore.cpfController.text;
     mapInsert["data_nascimento"] = registerTabStore.birthdayController.text;
-    mapInsert["genero"] = registerTabStore.gender.toLowerCase();
+    mapInsert["genero"] = genero;
     mapInsert["funcao"] = registerTabStore.function.toLowerCase();
     if(registerTabStore.function=="MEDICO") {
-      mapInsert["especialidade"] = registerTabStore.specialtyController.text;
-      mapInsert["photo"] = "https://cdn.icon-icons.com/icons2/1999/PNG/512/avatar_man_people_person_profile_user_icon_123385.png";
+      String especialidade = UtilsString.capitalize(registerTabStore.specialtyController.text);
+      mapInsert["especialidade"] = especialidade;
+      if(genero == "masculino") {
+        mapInsert["foto"] = "https://cdn.icon-icons.com/icons2/1999/PNG/512/avatar_man_people_person_profile_user_icon_123385.png";
+      } else if (genero == "feminino") {
+        mapInsert['foto'] = "https://cdn.icon-icons.com/icons2/2292/PNG/512/doctor_asian_female_people_avatar_icon_141428.png";
+      }
 
-      await _db.collection('especialidades').doc(registerTabStore.specialtyController.text).snapshots().listen((snapshot) {
+      await _db.collection('especialidades').doc(especialidade).get().then((snapshot) {
 
         Map<String, dynamic> dataUpdate = Map<String, dynamic>();
         List<dynamic> listaFuncionarios = [];
@@ -49,13 +56,13 @@ class InsertEmployeeRepository{
 
           dataUpdate['lista_funcionarios'] = listaFuncionarios;
 
-          _db.collection('especialidades').doc(registerTabStore.specialtyController.text).set(dataUpdate);
+          _db.collection('especialidades').doc(especialidade).set(dataUpdate);
         }else{
           listaFuncionarios.add(result.user?.uid ?? "");
 
           dataUpdate['lista_funcionarios'] = listaFuncionarios;
 
-          _db.collection('especialidades').doc(registerTabStore.specialtyController.text).set(dataUpdate);
+          _db.collection('especialidades').doc(especialidade).set(dataUpdate);
         }
 
       });

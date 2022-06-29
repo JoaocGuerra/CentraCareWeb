@@ -66,7 +66,7 @@ abstract class _DetailsAppointmentsDoctorStore with Store {
                 snapshotUser.get("nome") + " " + snapshotUser.get("sobrenome"),
                 codigoMedico, codigoPaciente, diaMesAno,
                 snapshotAppointment.get("nome_medico"), snapshotAppointment.get("especialidade_medico"),
-                snapshotAppointment.get("inicio"), snapshotAppointment.get("termino"), snapshotAppointment.get("status"), snapshotAppointment.get("receita"));
+                snapshotAppointment.get("inicio"), snapshotAppointment.get("termino"), snapshotAppointment.get("status"));
           });
 
           loading = false;

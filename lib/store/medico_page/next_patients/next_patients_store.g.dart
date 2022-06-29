@@ -144,8 +144,8 @@ mixin _$NextPatientsStore on _NextPatientsStore, Store {
       AsyncAction('_NextPatientsStore.fetchNextPatient', context: context);
 
   @override
-  Future<void> fetchNextPatient(dynamic txt) {
-    return _$fetchNextPatientAsyncAction.run(() => super.fetchNextPatient(txt));
+  Future<void> fetchNextPatient() {
+    return _$fetchNextPatientAsyncAction.run(() => super.fetchNextPatient());
   }
 
   late final _$_NextPatientsStoreActionController =

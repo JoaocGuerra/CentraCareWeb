@@ -17,9 +17,7 @@ class RegisterTab extends StatelessWidget {
           child: SingleChildScrollView(
             child: Padding(
                 padding: EdgeInsets.all(50.0),
-                child: Observer(builder: (_) {
-                  return FormRegister();
-                })),
+                child: FormRegister()),
           ),
         ),
       ),

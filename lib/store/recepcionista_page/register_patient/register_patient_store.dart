@@ -1,5 +1,3 @@
-import 'package:centralcareweb/repository/firebase_firestore/insert_employee_repository.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
 
@@ -7,7 +5,7 @@ import '../../../repository/firebase_firestore/insert_patient_repository.dart';
 
 part 'register_patient_store.g.dart';
 
-enum Gender { MASCULINO, FEMININO, OUTRO }
+enum GenderPatient { MASCULINO, FEMININO, OUTRO }
 
 class RegisterPatientStore = _RegisterPatientStore with _$RegisterPatientStore;
 
@@ -23,6 +21,8 @@ abstract class _RegisterPatientStore with Store {
   TextEditingController nameController = TextEditingController();
   @observable
   TextEditingController lastNameController = TextEditingController();
+  @observable
+  TextEditingController cpfController = TextEditingController();
   @observable
   TextEditingController phoneController = TextEditingController();
   @observable
@@ -43,6 +43,7 @@ abstract class _RegisterPatientStore with Store {
     passwordController.text = "";
     nameController.text = "";
     lastNameController.text = "";
+    cpfController.text = "";
     phoneController.text = "";
     birthdayController.text = "";
     gender = "Gênero";

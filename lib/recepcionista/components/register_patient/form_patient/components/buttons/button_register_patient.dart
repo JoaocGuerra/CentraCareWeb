@@ -24,7 +24,7 @@ class ButtonRegisterPatient extends StatelessWidget {
             child: const Center(
               child: Text(
                 "Cadastrar Paciente",
-                style: TextStyle(color: Colors.black, fontSize: 15),
+                style: TextStyle(color: Colors.white, fontSize: 15),
               ),
             ),
           ),

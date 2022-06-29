@@ -4,6 +4,7 @@ import 'package:centralcareweb/recepcionista/components/register_patient/form_pa
 import 'package:centralcareweb/recepcionista/components/register_patient/form_patient/components/fields/field_last_name.dart';
 import 'package:centralcareweb/recepcionista/components/register_patient/form_patient/components/fields/field_name.dart';
 import 'package:centralcareweb/recepcionista/components/register_patient/form_patient/components/fields/field_password.dart';
+import 'package:centralcareweb/recepcionista/components/register_patient/form_patient/components/selects/select_gender_patient.dart';
 import 'package:centralcareweb/recepcionista/components/register_patient/form_patient/components/text/text_confirm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -17,6 +18,7 @@ import '../../../../master/tabs/register_tab/form_register/components/fields/fie
 import '../../../../master/tabs/register_tab/form_register/components/select/select_gender.dart';
 import '../../../../store/recepcionista_page/register_patient/register_patient_store.dart';
 import 'components/Buttons/button_register_patient.dart';
+import 'components/fields/field_cpf.dart';
 import 'components/fields/field_phone.dart';
 
 class FormPatient extends StatelessWidget {
@@ -35,7 +37,7 @@ class FormPatient extends StatelessWidget {
           Column(
             children: [
               const SizedBox(
-                height: 100,
+                height: 50,
               ),
               FormFieldEmailRegisterPatient(),
               const SizedBox(
@@ -57,7 +59,12 @@ class FormPatient extends StatelessWidget {
                 height: kSpacing,
               ),
 
-              SelectGender(),
+              FormFieldCPFRegisterPatient(),
+              const SizedBox(
+                height: kSpacing,
+              ),
+
+              SelectGenderPatient(),
               const SizedBox(
                 height: kSpacing,
               ),

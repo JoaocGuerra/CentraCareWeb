@@ -9,6 +9,7 @@ import 'package:html_editor_enhanced/html_editor.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../model/patient_on_appointment_model.dart';
+import '../../../../repository/api/salvar_informacoes_consulta_repository.dart';
 import '../next_patients_store.dart';
 
 part 'patient_on_appointment_store.g.dart';
@@ -32,6 +33,8 @@ abstract class _PatientOnAppointmentStore with Store {
   }
 
   String diaMesAno = UtilsDateTime.getDatetimeNow();
+  @observable
+  String receita = "";
 
   @observable
   PatientOnAppointmentModel? patientOnAppointment;
@@ -123,6 +126,23 @@ abstract class _PatientOnAppointmentStore with Store {
         }
       }
     });
+  }
+
+  Future<void> savePDF(var txt)async {
+    String? codigoMedico = authStore.user?.uid;
+    try{
+      loading = true;
+      if(codigoMedico!=null){
+        await SalvarInformacoesConsultaRepository().savePDF(
+            codigoMedico,
+            diaMesAno, nextPatientsStore.patientPosition, txt
+        );
+      }
+      loading = false;
+    }catch(e){
+      loading = false;
+      print(e);
+    }
   }
 
   @action

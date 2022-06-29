@@ -1,18 +1,21 @@
 import 'package:centralcareweb/store/master_page/tabs/employees_tab/employees_tab_store.dart';
 import 'package:centralcareweb/store/show_pages/show_store.dart';
+import 'package:centralcareweb/utils/utils_string.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../../../../store/master_page/tabs/employees_tab/edit_employees/edit_employees_store.dart';
+
 class EmployeesCard extends StatelessWidget {
   final ShowStore showStore =  GetIt.I<ShowStore>();
-  final EmployeesTabStore employeesTabStore =  GetIt.I<EmployeesTabStore>();
+  final EditEmployeesStore editEmployeesStore =  GetIt.I<EditEmployeesStore>();
   final dynamic data;
 
   EmployeesCard({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    String titleCard = data['nome']+" "+data['sobrenome']+" - "+data['funcao'];
+    String titleCard = data['nome']+" "+data['sobrenome']+" - "+UtilsString.capitalize(data['funcao']);
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Container(
@@ -26,10 +29,16 @@ class EmployeesCard extends StatelessWidget {
             children: [
               IconButton(
                   onPressed: (){
-                    employeesTabStore.fetchDataEmployee(data.id);
+                    editEmployeesStore.fetchDataEmployee(data.id);
                     showStore.setShowInEmployeesRegister(2);
                   },
                   icon: Icon(Icons.edit, color: Colors.white,)
+              ),
+              IconButton(
+                  onPressed: (){
+                    editEmployeesStore.deleteEmployee(data.id);
+                  },
+                  icon: Icon(Icons.delete, color: Colors.redAccent,)
               ),
               Text(
                 titleCard,
@@ -42,43 +51,6 @@ class EmployeesCard extends StatelessWidget {
             ],
           ),
         ),
-        // child: TextButton(
-        //   style: ButtonStyle(
-        //     padding: MaterialStateProperty.all<EdgeInsets>(
-        //       const EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 20),
-        //     ),
-        //   ),
-        //   onPressed: () {
-        //     // Navigator.pushReplacement(
-        //     //     context,
-        //     //     MaterialPageRoute(
-        //     //         builder: (context) => UAppointmentPage(
-        //     //           codigoPaciente: data['codigo_paciente'],
-        //     //           codigoMedico: data['codigo_medico'],
-        //     //           diaMesAno: data['dia_mes_ano'],
-        //     //         )));
-        //   },
-        //   child: Row(
-        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //     children: [
-        //       Expanded(
-        //         child: Column(
-        //           crossAxisAlignment: CrossAxisAlignment.start,
-        //           children: [
-        //             Text(
-        //               titleCard,
-        //               style: const TextStyle(
-        //                 color: Colors.white,
-        //                 fontWeight: FontWeight.bold,
-        //                 fontSize: 16,
-        //               ),
-        //             ),
-        //           ],
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
       ),
     );
   }

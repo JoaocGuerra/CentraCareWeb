@@ -106,12 +106,12 @@ abstract class _NextPatientsStore with Store {
   }
 
   @action
-  Future<void> fetchNextPatient(var txt)async {
+  Future<void> fetchNextPatient()async {
 
     try{
       loading = true;
       await PosicaoFilaRepository().updatePatientAnswered(authStore.user?.uid ?? "", diaMesAno, patientPosition);
-      await SalvarInformacoesConsultaRepository().save(authStore.user?.uid ?? "", diaMesAno, patientPosition,txt);
+      await SalvarInformacoesConsultaRepository().save(authStore.user?.uid ?? "", diaMesAno, patientPosition);
       loading = false;
     }catch(e){
       loading = false;

@@ -73,6 +73,22 @@ mixin _$RegisterPatientStore on _RegisterPatientStore, Store {
     });
   }
 
+  late final _$cpfControllerAtom =
+      Atom(name: '_RegisterPatientStore.cpfController', context: context);
+
+  @override
+  TextEditingController get cpfController {
+    _$cpfControllerAtom.reportRead();
+    return super.cpfController;
+  }
+
+  @override
+  set cpfController(TextEditingController value) {
+    _$cpfControllerAtom.reportWrite(value, super.cpfController, () {
+      super.cpfController = value;
+    });
+  }
+
   late final _$phoneControllerAtom =
       Atom(name: '_RegisterPatientStore.phoneController', context: context);
 
@@ -193,6 +209,7 @@ emailController: ${emailController},
 passwordController: ${passwordController},
 nameController: ${nameController},
 lastNameController: ${lastNameController},
+cpfController: ${cpfController},
 phoneController: ${phoneController},
 birthdayController: ${birthdayController},
 gender: ${gender},

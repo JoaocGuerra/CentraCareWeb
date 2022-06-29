@@ -5,9 +5,9 @@ import 'package:get_it/get_it.dart';
 import '../../../../../../constans/app_constants.dart';
 import '../../../../../../store/recepcionista_page/register_patient/register_patient_store.dart';
 
-class SelectGender extends StatelessWidget {
+class SelectGenderPatient extends StatelessWidget {
   final RegisterPatientStore registerPatientStore =  GetIt.I<RegisterPatientStore>();
-  SelectGender({Key? key}) : super(key: key);
+  SelectGenderPatient({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,32 +32,32 @@ class SelectGender extends StatelessWidget {
                   width: 10,
                 ),
                 Text(
-                  "Gênero",
+                  registerPatientStore.gender,
                   style: TextStyle(
                       fontSize: 17, color: Colors.white.withOpacity(0.9)),
                 ),
               ],
             ),
-            PopupMenuButton<Gender>(
+            PopupMenuButton<GenderPatient>(
                 icon: const Icon(
                   Icons.arrow_drop_down,
                   color: Colors.white,
                   size: 30,
                 ),
-                onSelected: (Gender item) {
+                onSelected: (GenderPatient item) {
                   registerPatientStore.setGender(item.name);
                 },
-                itemBuilder: (BuildContext context) => <PopupMenuEntry<Gender>>[
-                      const PopupMenuItem<Gender>(
-                        value: Gender.MASCULINO,
+                itemBuilder: (BuildContext context) => <PopupMenuEntry<GenderPatient>>[
+                      const PopupMenuItem<GenderPatient>(
+                        value: GenderPatient.MASCULINO,
                         child: Text('MASCULINO'),
                       ),
-                      const PopupMenuItem<Gender>(
-                        value: Gender.FEMININO,
+                      const PopupMenuItem<GenderPatient>(
+                        value: GenderPatient.FEMININO,
                         child: Text('FEMININO'),
                       ),
-                      const PopupMenuItem<Gender>(
-                        value: Gender.OUTRO,
+                      const PopupMenuItem<GenderPatient>(
+                        value: GenderPatient.OUTRO,
                         child: Text('OUTRO'),
                       ),
                     ])

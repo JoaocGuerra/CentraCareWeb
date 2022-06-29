@@ -17,7 +17,7 @@ class FormFieldSpecialtyRegisterTab extends StatelessWidget {
         list: const [],
         textEditingController: registerTabStore.specialtyController,
         isPasswordType: false,
-        icon: Icons.wallet_travel,
+        icon: Icons.monitor_heart,
         text: 'Especialidade',
         textInputType: TextInputType.emailAddress,
         validator: (value) {

@@ -28,6 +28,7 @@ class InsertPatientRepository{
     mapInsert["email"] = registerPatientStore.emailController.text;
     mapInsert["nome"] = registerPatientStore.nameController.text;
     mapInsert["sobrenome"] = registerPatientStore.lastNameController.text;
+    mapInsert["cpf"] = registerPatientStore.cpfController.text;
     mapInsert["sexo"] = genero;
     mapInsert["telefone"] = registerPatientStore.phoneController.text;
     mapInsert["data_nascimento"] = registerPatientStore.birthdayController.text;

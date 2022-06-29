@@ -1,16 +1,12 @@
 import 'package:centralcareweb/recepcionista/components/appointments/details_appointments/form_details/components/button/button_deselect_query.dart';
 import 'package:centralcareweb/recepcionista/components/appointments/details_appointments/form_details/components/button/button_update_appointment.dart';
-import 'package:centralcareweb/recepcionista/components/appointments/details_appointments/form_details/components/fields/field_receita.dart';
 import 'package:centralcareweb/recepcionista/components/appointments/details_appointments/form_details/components/fields/field_status.dart';
 import 'package:centralcareweb/recepcionista/components/appointments/details_appointments/form_details/components/fields/field_termino.dart';
 import 'package:centralcareweb/recepcionista/components/appointments/details_appointments/form_details/components/others/posicao_fila.dart';
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../../../components/header_text.dart';
-import '../../../../../master/tabs/register_tab/form_register/components/button/button_register.dart';
 import '../../../../../store/recepcionista_page/appointments_doctor/details_appointments/details_appointments_doctor_store.dart';
 import 'components/select/select_hours.dart';
 import 'components/others/inicio_details.dart';
@@ -65,9 +61,6 @@ class FormDetails extends StatelessWidget {
                       ),
 
                       FormFieldDetailsTermino(),
-                      const SizedBox(height: 20,),
-
-                      FormFieldDetailsReceita(),
                       const SizedBox(height: 20,),
 
                       FormFieldDetailsStatus(),
