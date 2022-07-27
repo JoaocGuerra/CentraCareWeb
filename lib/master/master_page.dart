@@ -58,11 +58,6 @@ class _MasterPageState extends State<MasterPage> {
                 selectedIcon: Icon(Icons.book),
                 label: Text('Cadastrados'),
               ),
-              // NavigationRailDestination(
-              //   icon: Icon(Icons.settings_applications_outlined),
-              //   selectedIcon: Icon(Icons.settings_applications),
-              //   label: Text('Configurações'),
-              // ),
               NavigationRailDestination(
                 icon: Icon(Icons.exit_to_app_outlined,color: Colors.red,),
                 selectedIcon: Icon(Icons.exit_to_app,color: Colors.red),

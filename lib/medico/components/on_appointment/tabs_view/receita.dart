@@ -42,11 +42,11 @@ class Receita extends StatelessWidget {
                           child: Text("Link: "+patientOnAppointmentStore.receita)
                       )
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   SavePDFButton()
                 ],
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Visibility(
                 visible: patientOnAppointmentStore.receita!="",
                 child: EndAppointmentButton()

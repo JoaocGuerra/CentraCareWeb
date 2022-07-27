@@ -155,6 +155,7 @@ abstract class _PatientOnAppointmentStore with Store {
     perfilPsicossoialController.text = "";
     sinaisVitaisController.text = "";
     avaliacoesController.text = "";
+    receita = "";
   }
 
 }
